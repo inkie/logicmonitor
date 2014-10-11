@@ -1,0 +1,463 @@
+/* -----------------------------------------
+    color definitions
+----------------------------------------- */
+/* -----------------------------------------
+  Museo Sans
+----------------------------------------- */
+/*Museo Sans 100*/
+@font-face {
+  font-family: 'MuseoSans';
+  src: url("../fonts/MuseoSans/museosans_100-webfont.eot");
+  src: url("../fonts/MuseoSans/museosans_100-webfont.svg#MuseoSans100") format("svg"), url("../fonts/MuseoSans/museosans_100-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/MuseoSans/museosans_100-webfont.woff") format("woff"), url("../fonts/MuseoSans/museosans_100-webfont.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+/*Museo Sans 100 italic*/
+@font-face {
+  font-family: 'MuseoSans';
+  src: url("../fonts/MuseoSans/museosans_100_italic-webfont.eot");
+  src: url("../fonts/MuseoSans/museosans_100_italic-webfont.svg#MuseoSans100") format("svg"), url("../fonts/MuseoSans/museosans_100_italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/MuseoSans/museosans_100_italic-webfont.woff") format("woff"), url("../fonts/MuseoSans/museosans_100_italic-webfont.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+/*Museo Sans 300*/
+@font-face {
+  font-family: 'MuseoSans';
+  src: url("../fonts/MuseoSans/museosans_300-webfont.eot");
+  src: url("../fonts/MuseoSans/museosans_300-webfont.svg#MuseoSans300") format("svg"), url("../fonts/MuseoSans/museosans_300-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/MuseoSans/museosans_300-webfont.woff") format("woff"), url("../fonts/MuseoSans/museosans_300-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*Museo Sans 300 italic*/
+@font-face {
+  font-family: 'MuseoSans';
+  src: url("../fonts/MuseoSans/museosans_300_italic-webfont.eot");
+  src: url("../fonts/MuseoSans/museosans_300_italic-webfont.svg#MuseoSans300") format("svg"), url("../fonts/MuseoSans/museosans_300_italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/MuseoSans/museosans_300_italic-webfont.woff") format("woff"), url("../fonts/MuseoSans/museosans_300_italic-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+/*Museo Sans 300*/
+@font-face {
+  font-family: 'MuseoSans';
+  src: url("../fonts/MuseoSans/museosans_300-webfont.eot");
+  src: url("../fonts/MuseoSans/museosans_300-webfont.svg#MuseoSans300") format("svg"), url("../fonts/MuseoSans/museosans_300-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/MuseoSans/museosans_300-webfont.woff") format("woff"), url("../fonts/MuseoSans/museosans_300-webfont.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+/*Museo Sans 300 italic*/
+@font-face {
+  font-family: 'MuseoSans';
+  src: url("../fonts/MuseoSans/museosans_300_italic-webfont.eot");
+  src: url("../fonts/MuseoSans/museosans_300_italic-webfont.svg#MuseoSans300") format("svg"), url("../fonts/MuseoSans/museosans_300_italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/MuseoSans/museosans_300_italic-webfont.woff") format("woff"), url("../fonts/MuseoSans/museosans_300_italic-webfont.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+/*Museo Sans 500 */
+@font-face {
+  font-family: 'MuseoSans';
+  src: url("../fonts/MuseoSans/museosans_500-webfont.eot");
+  src: url("../fonts/MuseoSans/museosans_500-webfont.svg#MuseoSans500") format("svg"), url("../fonts/MuseoSans/museosans_500-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/MuseoSans/museosans_500-webfont.woff") format("woff"), url("../fonts/MuseoSans/museosans_500-webfont.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/*Museo Sans 700 */
+@font-face {
+  font-family: 'MuseoSans';
+  src: url("../fonts/MuseoSans/museosans_700-webfont.eot");
+  src: url("../fonts/MuseoSans/museosans_700-webfont.svg#MuseoSans700_italic") format("svg"), url("../fonts/MuseoSans/museosans_700-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/MuseoSans/museosans_700-webfont.woff") format("woff"), url("../fonts/MuseoSans/museosans_700-webfont.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/*Museo Sans 700 italic*/
+@font-face {
+  font-family: 'MuseoSans';
+  src: url("../fonts/MuseoSans/museosans_700_italic-webfont.eot");
+  src: url("../fonts/MuseoSans/museosans_700_italic-webfont.svg#MuseoSans700_italic") format("svg"), url("../fonts/MuseoSans/museosans_700_italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/MuseoSans/museosans_700_italic-webfont.woff") format("woff"), url("../fonts/MuseoSans/museosans_700_italic-webfont.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+/*Museo Sans 900*/
+@font-face {
+  font-family: 'MuseoSans';
+  src: url("../fonts/MuseoSans/museosans_900-webfont.eot");
+  src: url("../fonts/MuseoSans/museosans_900-webfont.svg#MuseoSans900") format("svg"), url("../fonts/MuseoSans/museosans_900-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/MuseoSans/museosans_900-webfont.woff") format("woff"), url("../fonts/MuseoSans/museosans_900-webfont.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+/*Museo Sans 900 italic*/
+@font-face {
+  font-family: 'MuseoSans';
+  src: url("../fonts/MuseoSans/museosans_900_italic-webfont.eot");
+  src: url("../fonts/MuseoSans/museosans_900_italic-webfont.svg#MuseoSans900_italic") format("svg"), url("../fonts/MuseoSans/museosans_900_italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/MuseoSans/museosans_900_italic-webfont.woff") format("woff"), url("../fonts/MuseoSans/museosans_900_italic-webfont.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* override browser's default scrollbar style*/
+/* line 150, ../sass/common.scss */
+::-webkit-scrollbar-track-piece {
+  background-color: #fff;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+/* line 155, ../sass/common.scss */
+::-webkit-scrollbar {
+  width: 13px;
+  height: 10px;
+  border: solid 1px #ddd;
+}
+
+/* line 160, ../sass/common.scss */
+::-webkit-scrollbar-thumb {
+  background-color: #cbcbcb;
+  background-clip: padding-box;
+  border: 1px solid #bbb;
+  min-height: 28px;
+}
+
+/* line 166, ../sass/common.scss */
+::-webkit-scrollbar-thumb:hover {
+  border: 1px solid #636363;
+  background-color: #929292;
+}
+
+/* -----------------------------------------
+   global styles
+----------------------------------------- */
+/* line 174, ../sass/common.scss */
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 178, ../sass/common.scss */
+body, body * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'MuseoSans';
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* line 185, ../sass/common.scss */
+body.app {
+  background: none repeat scroll 0 0 #F5F5F5;
+}
+
+/* line 189, ../sass/common.scss */
+a {
+  border-bottom: 1px dashed #CCCCCC;
+  color: #86549c;
+}
+/* line 193, ../sass/common.scss */
+a:link {
+  color: #86549c;
+  text-decoration: none;
+}
+/* line 194, ../sass/common.scss */
+a:hover, a:active, a:focus {
+  color: #0d8dcc;
+}
+
+/* line 197, ../sass/common.scss */
+.clearfix, .add-clearfix {
+  overflow: hidden;
+  *zoom: 1;
+}
+
+/* line 201, ../sass/common.scss */
+ul, ol, dl {
+  line-height: 1.6;
+}
+
+/* line 205, ../sass/common.scss */
+h1 {
+  font-size: 32px;
+}
+
+/* line 209, ../sass/common.scss */
+h2 {
+  font-size: 24px;
+}
+
+/* line 213, ../sass/common.scss */
+h3 {
+  font-size: 16px;
+}
+
+/* line 217, ../sass/common.scss */
+h4 {
+  font-size: 14px;
+}
+
+/* line 221, ../sass/common.scss */
+h5 {
+  font-size: 12px;
+}
+
+/* line 225, ../sass/common.scss */
+h6 {
+  font-size: 10px;
+}
+
+/* line 229, ../sass/common.scss */
+.left {
+  float: left;
+}
+
+/* line 233, ../sass/common.scss */
+.right {
+  float: right;
+}
+
+/* -----------------------------------------
+   App Navigation
+----------------------------------------- */
+/* line 240, ../sass/common.scss */
+.top-nav {
+  padding: 0 8px;
+  position: fixed;
+  z-index: 10;
+  background: white;
+  width: 100%;
+  height: 55px;
+  border-bottom: 5px solid #ebebeb;
+  line-height: 55px;
+  border-bottom: none;
+}
+/* line 251, ../sass/common.scss */
+.top-nav a {
+  font-size: 14px;
+}
+/* line 255, ../sass/common.scss */
+.top-nav a.gray-link {
+  color: #757575;
+}
+/* line 259, ../sass/common.scss */
+.top-nav .tiny-splitter {
+  display: inline-block;
+  height: 18px;
+  border-right: solid 1px #ccc;
+  position: relative;
+  top: 5px;
+}
+/* line 267, ../sass/common.scss */
+.top-nav .logo {
+  background: url('../images/logo.png?1400467555');
+  float: left;
+  display: inline-block;
+  width: 64px;
+  height: 50px;
+  text-decoration: none;
+  border-bottom: none;
+}
+/* line 278, ../sass/common.scss */
+.top-nav .powered-by {
+  background: url('../images/powered_by.png?1403578664');
+  float: left;
+  display: inline-block;
+  width: 188px;
+  height: 32px;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* -----------------------------------------
+    workspace global style, make the sub contents
+    in a predefined container
+----------------------------------------- */
+/* line 292, ../sass/common.scss */
+.workspace-con {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 55px;
+}
+/* line 299, ../sass/common.scss */
+.workspace-con .workspace {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+/* line 304, ../sass/common.scss */
+.workspace-con .workspace .sidebar-con {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 3;
+}
+/* line 312, ../sass/common.scss */
+.workspace-con .workspace .main-con {
+  width: 100%;
+  height: 100%;
+  padding-left: 247px;
+}
+/* line 317, ../sass/common.scss */
+.workspace-con .workspace .main-con .page-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+/* line 322, ../sass/common.scss */
+.workspace-con .workspace .main-con .page-wrapper .page-header {
+  height: 61px;
+  line-height: 61px;
+  padding-left: 25px;
+  z-index: 2;
+  position: relative;
+  background: whitesmoke;
+}
+/* line 330, ../sass/common.scss */
+.workspace-con .workspace .main-con .page-wrapper .page-header h1 {
+  font-size: 30px;
+  font-weight: normal;
+  float: left;
+}
+/* line 335, ../sass/common.scss */
+.workspace-con .workspace .main-con .page-wrapper .page-header h1 * {
+  vertical-align: middle;
+}
+/* line 339, ../sass/common.scss */
+.workspace-con .workspace .main-con .page-wrapper .page-header h1 .page-name {
+  font-size: 30px;
+}
+/* line 343, ../sass/common.scss */
+.workspace-con .workspace .main-con .page-wrapper .page-header h1 .page-manage {
+  margin-left: 20px;
+}
+/* line 349, ../sass/common.scss */
+.workspace-con .workspace .main-con .page-wrapper .page-content {
+  height: 100%;
+  width: 100%;
+  padding-top: 61px;
+  overflow: auto;
+  background: white;
+  position: absolute;
+  top: 0;
+}
+
+/* line 364, ../sass/common.scss */
+.formError .formErrorContent {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  border: none;
+  -webkit-box-shadow: 2px 2px 3px #999999;
+  -moz-box-shadow: 2px 2px 3px #999999;
+  box-shadow: 2px 2px 3px #999999;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: bold;
+  background: #ea262b;
+}
+/* line 374, ../sass/common.scss */
+.formError .formErrorArrow div {
+  border: none;
+  background: #ea262b;
+}
+/* line 378, ../sass/common.scss */
+.formError .formErrorArrow .line3 {
+  border: none;
+}
+/* line 381, ../sass/common.scss */
+.formError .formErrorArrow .line2 {
+  background: none;
+}
+/* line 384, ../sass/common.scss */
+.formError .formErrorArrow .line1 {
+  background: none;
+}
+
+/* line 390, ../sass/common.scss */
+.bottom-action-area {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 20px;
+  border-top: 1px solid gray;
+  background: white;
+}
+
+/* datetime picker */
+/* line 400, ../sass/common.scss */
+.ui-timepicker-div .ui-widget-header {
+  margin-bottom: 8px;
+}
+
+/* line 401, ../sass/common.scss */
+.ui-timepicker-div dl {
+  text-align: left;
+}
+
+/* line 402, ../sass/common.scss */
+.ui-timepicker-div dl dt {
+  height: 25px;
+  margin-bottom: -25px;
+}
+
+/* line 403, ../sass/common.scss */
+.ui-timepicker-div dl dd {
+  margin: 0 10px 10px 65px;
+}
+
+/* line 404, ../sass/common.scss */
+.ui-timepicker-div td {
+  font-size: 90%;
+}
+
+/* line 405, ../sass/common.scss */
+.ui-tpicker-grid-label {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 407, ../sass/common.scss */
+.ui-timepicker-rtl {
+  direction: rtl;
+}
+
+/* line 408, ../sass/common.scss */
+.ui-timepicker-rtl dl {
+  text-align: right;
+}
+
+/* line 409, ../sass/common.scss */
+.ui-timepicker-rtl dl dd {
+  margin: 0 65px 10px 10px;
+}
+
+/* line 411, ../sass/common.scss */
+.ellips {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* line 419, ../sass/common.scss */
+span.ellips {
+  display: inline-block;
+}
+
+/* line 424, ../sass/common.scss */
+button[disabled], input[disabled] {
+  opacity: 0.4;
+}
