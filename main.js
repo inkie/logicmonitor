@@ -38,6 +38,10 @@ define([
 
 	page = page[1];
 
+	if (page === 'index') {
+		page = 'demo';
+	}
+
 	// initialize the header view
 	$('.header-con').append(new TopNavBarView().el);
 
