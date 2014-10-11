@@ -2068,7 +2068,7 @@ var requirejs, require, define;
 }(this));
 
 require.config({
-    urlArgs: 'v=',
+    urlArgs: 'v=' + new Date().getTime(),
 	baseUrl: '/',
 	waitSeconds: 0,
 	packages: ['commons/logicmonitor/templates', 'commons/logicmonitor/controls/templates', 'demo/templates', 'demo/views/sub'],
