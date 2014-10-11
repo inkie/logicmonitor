@@ -219,7 +219,7 @@ module.exports = function(grunt) {  // jshint ignore:line
 
 function getRequirejsConfig(destDir) {
 	var config = {
-		startupjs2: getRequirejsConfigHelper('js', 'startup', destDir + '/startup.js', true)
+		startupjs: getRequirejsConfigHelper('js', 'startup', destDir + '/startup.js', true)
 	};
 
 	_.each(packages, function(entryPath, packagePath) {
@@ -252,6 +252,7 @@ function getRequirejsConfigHelper(type, inPath, outPath, isStartup) {
 
 		var rConfig = {
 			options: {
+				logLevel: 0,
 				baseUrl: getSrcFile('/'),
 				mainConfigFile: getSrcFile('config.js'),
 				name: inPath,
