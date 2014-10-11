@@ -32,7 +32,7 @@ define([
 	var page = /\/(.*?)\.html/.exec(window.location.pathname);
 
 	if (!page || !page[1]) {
-		page = 'index';
+		page = ['', 'index'];
 	}
 
 	page = page[1];
