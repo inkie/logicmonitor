@@ -3,11 +3,13 @@
  */
 define([
     './AutoCompleteView',
-	'./ButtonsView'
-], function (AutoCompleteView, ButtonsView) {
+	'./ButtonsView',
+	'./BlockUIView'
+], function (AutoCompleteView, ButtonsView, BlockUIView) {
 
     return {
         'auto-complete': AutoCompleteView,
-	    'buttons': ButtonsView
+	    'buttons': ButtonsView,
+	    'block-ui': BlockUIView
     };
 });

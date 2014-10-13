@@ -39,6 +39,8 @@ define([
 		},
 
 		initialize: function(options) {
+			this.options = options || {};
+
 			this.options.uiOptions = this.options.uiOptions || {};
 			this.options.uiOptions.css = this.options.uiOptions.css || {};
 			this.options.uiOptions.overlayCSS = this.options.uiOptions.overlayCSS || {};
@@ -57,6 +59,7 @@ define([
          *   uiOptions: [O] { //blockUI options. @link http://www.malsup.com/jquery/block/#options
 		 */
 		block: function(options) {
+			this.unBlock();
 			options = options || {};
 			options.uiOptions = options.uiOptions || {};
 			options.uiOptions.css = options.uiOptions.css || {};
@@ -105,7 +108,7 @@ define([
 			};
 
 			// process blockEl
-			if (this.options.hasOwnProperty('$blockEl')) {
+			if (this.options.hasOwnProperty('$blockEl') && this.options.$blockEl) {
 				this.options.$blockEl.block(this.options.uiOptions);
 			}
 			else {
@@ -114,7 +117,7 @@ define([
 		},
 
 		unBlock: function() {
-			if (this.options.hasOwnProperty('$blockEl')) {
+			if (this.options.hasOwnProperty('$blockEl') && this.options.$blockEl) {
 				this.options.$blockEl.unblock(this.options.uiOptions);
 			}
 			else {
