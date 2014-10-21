@@ -6,6 +6,6 @@ define([
     'utils'
 ], function(_, utils) {
 	return {
-
+		'signup': '/signup'
 	};
 });

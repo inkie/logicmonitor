@@ -1,6 +1,7 @@
 define([
 	'core',
-	'signup/templates'
+	'signup/templates',
+	'jq-validationEngine-en'
 ], function (LM, templates) {
 
 	return LM.View.extend({
@@ -9,6 +10,7 @@ define([
 		template: templates['signup/SignupWorkspace'],
 
 		events: {
+			'click .btn-signup': '_onClickSignup'
 		},
 
 		appEvents: {
@@ -22,6 +24,16 @@ define([
 			var module = this.module;
 
 			this.$el.html(this.template());
+
+			this.$('.validationEngineContainer').validationEngine({
+			});
+		},
+
+		_onClickSignup: function () {
+
+			if (this.$('.validationEngineContainer').validationEngine('validate')) {
+				var data = this.serializeForm();
+			}
 		}
 	});
 });
