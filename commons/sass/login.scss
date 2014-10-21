@@ -1,0 +1,23 @@
+@import "compass/css3";
+
+.workspace {
+    background: white;
+}
+.signin-content {
+    width: 320px;
+    margin: auto;
+}
+
+.signin-foot {
+    width: 385px;
+    margin: auto;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.signin-logo {
+    width: 288px;
+    height: 56px;
+    margin: 0 auto 50px auto;
+    @include background(image-url('signin_logo.png', false, true));
+}

@@ -1,0 +1,26 @@
+/* line 3, ../sass/login.scss */
+.workspace {
+  background: white;
+}
+
+/* line 6, ../sass/login.scss */
+.signin-content {
+  width: 320px;
+  margin: auto;
+}
+
+/* line 11, ../sass/login.scss */
+.signin-foot {
+  width: 385px;
+  margin: auto;
+  margin-top: 60px;
+  text-align: center;
+}
+
+/* line 18, ../sass/login.scss */
+.signin-logo {
+  width: 288px;
+  height: 56px;
+  margin: 0 auto 50px auto;
+  background: url('../images/signin_logo.png?1413872017');
+}
