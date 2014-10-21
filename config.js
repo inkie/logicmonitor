@@ -2,7 +2,8 @@ require.config({
     urlArgs: 'v=' + new Date().getTime(),
 	baseUrl: '/',
 	waitSeconds: 0,
-	packages: ['commons/logicmonitor/templates', 'commons/logicmonitor/controls/templates', 'demo/templates', 'demo/views/sub'],
+	packages: ['commons/logicmonitor/templates', 'commons/logicmonitor/controls/templates', 'demo/templates',
+		'demo/views/sub', 'login/templates', 'password/templates', 'signup/templates'],
 	paths: {
         'commons/logicmonitor/partials_compiled': 'commons/logicmonitor/templates/.auto_partials',
         'commons/logicmonitor/templates_compiled': 'commons/logicmonitor/templates/.auto_templates',
@@ -12,6 +13,15 @@ require.config({
 
         'demo/partials_compiled': 'demo/templates/.auto_partials',
         'demo/templates_compiled': 'demo/templates/.auto_templates',
+
+		'login/partials_compiled': 'login/templates/.auto_partials',
+		'login/templates_compiled': 'login/templates/.auto_templates',
+
+		'password/partials_compiled': 'password/templates/.auto_partials',
+		'password/templates_compiled': 'password/templates/.auto_templates',
+
+		'signup/partials_compiled': 'signup/templates/.auto_partials',
+		'signup/templates_compiled': 'signup/templates/.auto_templates',
 
 		'core': 'commons/logicmonitor/core/core',
 		'utils': 'commons/logicmonitor/core/utils',

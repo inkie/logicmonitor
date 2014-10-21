@@ -1,6 +1,9 @@
 var _ = require('lodash'),
 	packages = {
-		'demo': ['demo.html', 'index.html']
+		'demo': ['demo.html', 'index.html'],
+		'login': 'login.html',
+		'password': 'password.html',
+		'signup': 'signup.html'
 	},
 	srcDir = '.',
 	destDir,

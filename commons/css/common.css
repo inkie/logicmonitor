@@ -159,12 +159,12 @@ body.app {
 
 /* line 189, ../sass/common.scss */
 a {
-  border-bottom: 1px dashed #CCCCCC;
-  color: #86549c;
+  border-bottom: 1px solid #621f71;
+  color: #621f71;
 }
 /* line 193, ../sass/common.scss */
 a:link {
-  color: #86549c;
+  color: #621f71;
   text-decoration: none;
 }
 /* line 194, ../sass/common.scss */
@@ -256,7 +256,7 @@ h6 {
 }
 /* line 267, ../sass/common.scss */
 .top-nav .logo {
-  background: url('../images/logo.png?1413171203');
+  background: url('../images/logo.png?1413173713');
   float: left;
   display: inline-block;
   width: 64px;
@@ -266,7 +266,7 @@ h6 {
 }
 /* line 278, ../sass/common.scss */
 .top-nav .powered-by {
-  background: url('../images/powered_by.png?1413173692');
+  background: url('../images/powered_by.png?1413885619');
   float: left;
   display: inline-block;
   width: 188px;
@@ -460,4 +460,32 @@ span.ellips {
 /* line 424, ../sass/common.scss */
 button[disabled], input[disabled] {
   opacity: 0.4;
+}
+
+/* line 428, ../sass/common.scss */
+.signin-content {
+  width: 515px;
+  margin: auto;
+  padding-top: 60px;
+}
+/* line 432, ../sass/common.scss */
+.signin-content .signin-logo {
+  width: 288px;
+  height: 56px;
+  margin: 0 auto 25px auto;
+  background: url('../images/signin_logo.png?1413885619');
+}
+/* line 439, ../sass/common.scss */
+.signin-content .section-box {
+  padding: 55px 100px;
+}
+/* line 442, ../sass/common.scss */
+.signin-content .section-box .section-content {
+  padding: 0;
+}
+
+/* line 447, ../sass/common.scss */
+.page-foot {
+  margin-top: 20px;
+  text-align: center;
 }
