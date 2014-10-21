@@ -187,10 +187,10 @@ body.app {
 }
 
 a {
-    border-bottom:  1px dashed #CCCCCC;
-    color: $color-purple;
+    border-bottom:  1px solid $color-purple2;
+    color: $color-purple2;
 
-    &:link {color: $color-purple; text-decoration: none;}
+    &:link {color: $color-purple2; text-decoration: none;}
     &:hover, &:active, &:focus { color: #0d8dcc; }
 }
 
@@ -423,5 +423,29 @@ span {
 
 button[disabled], input[disabled]{
     opacity: 0.4;
+}
+
+.signin-content {
+    width: 515px;
+    margin: auto;
+    padding-top: 60px;
+    .signin-logo {
+        width: 288px;
+        height: 56px;
+        margin: 0 auto 25px auto;
+        @include background(image-url('signin_logo.png', false, true));
+    }
+
+    .section-box {
+        padding:55px 100px;
+
+        .section-content {
+            padding: 0;
+        }
+    }
+}
+.page-foot {
+    margin-top: 20px;
+    text-align: center;
 }
 
