@@ -64,61 +64,27 @@ define([
 							}, 0);
 						});
 					} else {
-						if (typeof err.status != 'undefined') {
-							MessageBox.alert( err.status + ':' + err.errmsg, 'Sign up error');
-						} else {
-							MessageBox.alert(err.message, 'Sign up error');
-						}
+						MessageBox.alert( err.status + ':' + err.errmsg, 'Sign up error');
 					}
 				});
 			}
 		},
 
 		_signup: function (data, cb) {
-			if (window.Firebase && LM.enableFirebase) {
-				var firebase = new Firebase(LM.firebase.root);
+			var user = new UserModel({
+				username: data.username,
+				email: data.email,
+				password: data.password
+			});
 
-				firebase.child('users').child(data.username).once('value', function (snap) {
-					var user = snap.val();
-
-					if (user) {
-						cb({
-							message: 'The usename has been registed, please select another one!'
-						});
-						return;
-					}
-
-					firebase.createUser({
-						email    : data.email,
-						password : data.password
-					}, function (err) {
-						if (!err) {
-							// save the user's profile into Firebase so we can
-							// list users, use them in security rules, and show profiles
-							var newUser = firebase.child('users').child(data.username);
-							newUser.set(data);
-						}
-
-						cb(err);
-					});
-
-				});
-			} else {
-				var user = new UserModel({
-					username: data.username,
-					email: data.email,
-					password: data.password
-				});
-
-				user.save(data, {
-					success: function (model, response) {
-						cb(null, model.toJSON());
-					},
-					error: function (model, response) {
-						cb(response);
-					}
-				});
-			}
+			user.save(data, {
+				success: function (model, response) {
+					cb(null, model.toJSON());
+				},
+				error: function (model, response) {
+					cb(response);
+				}
+			});
 		}
 	});
 });

@@ -26,12 +26,10 @@ define([
 
     var LM = window.LM || {
         localStorage: localStorage,
-	    enableFirebase: true,
 	    projectName: projectName,
 	    apiRoot: projectName + '/rest',
-	    firebase: {
-		    root: 'https://amber-fire-3474.firebaseio.com'
-	    }
+	    passRemTime: 30 * 24 * 3600 * 1000,
+	    sessionTimeout: 30 * 60 * 1000
      };
 
 	LM.toLoginPage = function () {
@@ -40,6 +38,41 @@ define([
 		} catch (e) {
 			alert('Unauthorized, please relogin.');
 		}
+	};
+
+	LM.getLoginUser = function () {
+		var user = null;
+		try {
+			user = JSON.parse(localStorage.securityUser);
+
+			var curTime = new Date().getTime();
+
+			if (user.username && user.securityToken && user.timestamp && user.activeTimestamp) {
+				if (user.remember) {
+					if (curTime > user.timestamp && curTime - user.timestamp < LM.passRemTime) {
+						user = user;
+					} else {
+						user = null;
+					}
+				} else {
+					if (curTime > user.activeTimestamp && curTime - user.activeTimestamp < LM.sessionTimeout) {
+						user = user;
+					} else {
+						user = null;
+					}
+				}
+			} else {
+				user = null;
+			}
+		} catch (e) {
+
+		}
+
+		if (user == null) {
+			localStorage.securityUser = '';
+		}
+
+		return user;
 	};
 
 	LM.utils = utils;
@@ -84,8 +117,13 @@ define([
 
 		options.cache = options.cache === true ? true : false;
 		options.beforeSend = options.beforeSend || function(xhr) {
-			xhr.setRequestHeader('Authorization',
-				utils.getAuthToken(timeStamp, localStorage.securityUsername, localStorage.securityToken, true));
+			var securityUser = LM.getLoginUser();
+
+			if (securityUser) {
+				securityUser.activeTimestamp = timeStamp;
+				xhr.setRequestHeader('Authorization',
+					utils.getAuthToken(timeStamp, securityUser.username, securityUser.securityToken, true));
+			}
 
 			if(options.customHeaders){
 				_.each(options.customHeaders, function(value, key){
