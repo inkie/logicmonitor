@@ -6,8 +6,9 @@ define([
 	'b2',
     'lodash',
     'utils',
+	'backbone',
     'es5-shim'
-], function($, B2, _, utils) {
+], function($, B2, _, utils, Backbone) {
 
     /**
      * localStorage namespace define:
@@ -21,9 +22,25 @@ define([
 	} catch(e) {
 	}
 
+	var projectName = 'tpl1024';
+
     var LM = window.LM || {
-        localStorage: localStorage
+        localStorage: localStorage,
+	    enableFirebase: true,
+	    projectName: projectName,
+	    apiRoot: projectName + '/rest',
+	    firebase: {
+		    root: 'https://amber-fire-3474.firebaseio.com'
+	    }
      };
+
+	LM.toLoginPage = function () {
+		try {
+			window.top.location.href = 'login.html';
+		} catch (e) {
+			alert('Unauthorized, please relogin.');
+		}
+	};
 
 	LM.utils = utils;
 
@@ -43,6 +60,92 @@ define([
     LM.ENTER_KEY = 13;
     LM.TAB_KEY   = 9;
 
+
+	/**
+	 * Define LM.rajax and rewrite Backbone.ajax
+	 * LM.rajax contains the authorization logics with the Rest API, so, if you use Rest API, please make sure to
+	 * call LM.rajax
+	 * @type {rajax}
+	 */
+	Backbone.ajax = LM.rajax = function (options) {
+		var timeStamp = new Date().getTime() - (window.timeStampDelta || 0);
+
+		options.url = utils.buildUrl(options.url, {
+			timestamp: timeStamp
+		});
+
+		options.dataType = options.dataType || 'json';
+
+		if(options.contentType === false){
+			options.contentType = false;
+		} else {
+			options.contentType = options.contentType || 'application/json';
+		}
+
+		options.cache = options.cache === true ? true : false;
+		options.beforeSend = options.beforeSend || function(xhr) {
+			xhr.setRequestHeader('Authorization',
+				utils.getAuthToken(timeStamp, localStorage.securityUsername, localStorage.securityToken, true));
+
+			if(options.customHeaders){
+				_.each(options.customHeaders, function(value, key){
+					xhr.setRequestHeader(key, value);
+				});
+			}
+		};
+
+		var success = options.success,
+			error = options.error;
+
+		options.success = function(data, textStatus, jqXHR) {
+			if (jqXHR.status == 204) {
+				if ($.isFunction(success)) {
+					success(data || {});
+				}
+			} else if (!data || data.status !== 200) {
+				if (data && data.status === 401) {
+					LM.toLoginPage();
+				} else if ($.isFunction(error)) {
+					error(data || {});
+				} else {
+					// the default error function if caller not define it
+					require(['lmmsgbox'], function (MessageBox) {
+						var response = data || {};
+
+						MessageBox.alert((!response.errmsg || response.errmsg == 'error') ?
+							('Error - status(' + response.status + ' : ' + jqXHR.statusText + ') errmsg:' + response.errmsg) : response.errmsg);
+					});
+				}
+			} else {
+				if ($.isFunction(success)) {
+					success(data || {});
+				}
+			}
+		};
+
+		options.error = function(jqXHR, textStatus, errorThrown) {
+			if (jqXHR.status === 401) {
+				LM.toLoginPage();
+			} else if ($.isFunction(error)) {
+				error({
+					status: jqXHR.status || 0,
+					errmsg: textStatus
+				});
+			} else {
+				// the default error function if caller not define it
+				require(['lmmsgbox'], function (MessageBox) {
+					var response = {
+						status: jqXHR.status || 0,
+						errmsg: textStatus
+					};
+
+					MessageBox.alert( 'Error - status(' + response.status + ' : ' + jqXHR.statusText + ') errmsg:' + response.errmsg);
+				});
+			}
+		};
+
+		return $.ajax(options);
+	};
 
 	/**
 	 * Define LM.Model as the base model for all models

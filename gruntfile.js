@@ -3,7 +3,8 @@ var _ = require('lodash'),
 		'demo': 'demo.html',
 		'login': 'login.html',
 		'password': 'password.html',
-		'signup': 'signup.html'
+		'signup': 'signup.html',
+		'index': 'index.html'
 	},
 	srcDir = '.',
 	destDir,

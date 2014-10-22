@@ -3,9 +3,17 @@
  */
 define([
     'lodash',
-    'utils'
-], function(_, utils) {
+    'utils',
+	'core'
+], function(_, utils, LM) {
+	var apiRoot = LM.apiRoot;
+
 	return {
-		'signup': '/signup'
+		'users': apiRoot + '/users',
+		'login': apiRoot + '/users/login',
+		'logoff': function (userId) {
+			return apiRoot + '/users/' + userId + '/logoff';
+		},
+		'forgotpass': apiRoot + '/users/forgotpass'
 	};
 });

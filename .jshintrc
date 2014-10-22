@@ -9,5 +9,5 @@
 	"eqnull": true,
 	"eqeqeq": false,
 
-	"predef": ["jQuery", "_", "$", "define", "require", "console", "alert", "google"]
+	"predef": ["jQuery", "_", "$", "define", "require", "console", "alert", "google", "Firebase", "LM"]
 }
