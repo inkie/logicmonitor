@@ -32,7 +32,7 @@ define([
 	var page = /\/(.*?)\.html/.exec(window.location.pathname);
 
 	if (!page || !page[1]) {
-		alert('The page you are visiting can not be accessible, please check your URL!');
+		page = ['', 'index'];
 		return;
 	}
 
