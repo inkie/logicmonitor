@@ -9,7 +9,7 @@ define([
 ], function (LM, templates, utils, MessageBox, UserModel, BlockUI) {
 
 	return LM.View.extend({
-		className: 'workspace',
+		className: 'workspace signup-workspace',
 
 		template: templates['signup/SignupWorkspace'],
 

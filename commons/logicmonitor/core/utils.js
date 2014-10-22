@@ -1,8 +1,9 @@
 define([
+	'jquery',
 	'lodash',
 	'base64',
 	'md5'
-], function (_, Base64, md5) {
+], function ($, _, Base64, md5) {
     return {
 	    getFilterStr: function (filterObj) {
 		    var filterStr = [];
@@ -90,7 +91,7 @@ define([
 	     * @param p security token, default is window.securityToken
 	     * @param timestamp
 	     */
-	    getAuthToken: function(timestamp, u, p, useInHttpHeader) {
+	    getAuthToken: function (timestamp, u, p, useInHttpHeader) {
 		    var secUser = u || window.securityUsername, secToken = p || window.securityToken;
 		    var base64Token = Base64.encode(secUser + ':' + md5(secToken + timestamp));
 
@@ -99,6 +100,21 @@ define([
 		    } else {
 			    return base64Token;
 		    }
+	    },
+
+	    loadCssFile: function (filename) {
+		    var fileref = document.createElement('link');
+		    fileref.setAttribute('rel', 'stylesheet');
+		    fileref.setAttribute('type', 'text/css');
+		    fileref.setAttribute('href', filename);
+
+		    if (typeof fileref != 'undefined') {
+			    document.getElementsByTagName('head')[0].appendChild(fileref);
+	        }
+		},
+
+	    removeCssFile: function (filename) {
+		    $('link[rel=stylesheet][href="' + filename + '"]').remove();
 	    }
     };
 });

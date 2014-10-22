@@ -42,10 +42,10 @@ define([
 
 	LM.getLoginUser = function () {
 		var user = null;
+		var curTime = new Date().getTime();
+
 		try {
 			user = JSON.parse(localStorage.securityUser);
-
-			var curTime = new Date().getTime();
 
 			if (user.username && user.securityToken && user.timestamp && user.activeTimestamp) {
 				if (user.remember) {
@@ -69,7 +69,22 @@ define([
 		}
 
 		if (user == null) {
-			localStorage.securityUser = '';
+			if (localStorage.__debug__ == '1') { // the debug flag
+				user = localStorage.securityUser = JSON.stringify({
+					id: '__debug__',
+					username: 'test-user',
+					securityToken: 'xxxxx',
+					timestamp: curTime,
+					activeTimestamp: curTime
+				});
+			} else {
+				localStorage.securityUser = '';
+			}
+		} else {
+			if (localStorage.__debug__ != '1' && user.id == '__debug__') {
+				localStorage.securityUser = '';
+				user = null;
+			}
 		}
 
 		return user;

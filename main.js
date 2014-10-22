@@ -48,7 +48,9 @@ define([
 		if (page == 'signup' || page == 'login') {
 			if (history.pushState) {
 				history.pushState({}, null, 'index.html');
+				utils.removeCssFile('commons/css/' + page + '.css');
 				page = 'index';
+				utils.loadCssFile('common/css/index.css');
 			} else {
 				location.href = 'index.html';
 				return;
@@ -57,7 +59,9 @@ define([
 	} else if (page != 'login' && page != 'password' && page != 'signup') {
 		if (history.pushState) {
 			history.pushState({}, null, 'signup.html');
+			utils.removeCssFile('commons/css/' + page + '.css');
 			page = 'signup';
+			utils.loadCssFile('commons/css/signup.css');
 		} else {
 			location.href = 'signup.html';
 			return;

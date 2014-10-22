@@ -6,7 +6,7 @@ define([
 ], function (LM, templates, modelUrls, MessageBox) {
 
 	return LM.View.extend({
-		className: 'workspace',
+		className: 'workspace login-workspace',
 
 		template: templates['login/LoginWorkspace'],
 

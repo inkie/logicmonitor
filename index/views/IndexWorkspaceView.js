@@ -4,7 +4,7 @@ define([
 ], function (LM, templates) {
 
 	return LM.View.extend({
-		className: 'workspace',
+		className: 'workspace index-workspace',
 
 		template: templates['index/IndexWorkspace'],
 

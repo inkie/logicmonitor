@@ -6,7 +6,7 @@ define([
 ], function (LM, DemoSidebarView, templates, subViewClasses) {
 
 	return LM.View.extend({
-		className: 'workspace',
+		className: 'workspace demo-workspace',
 
 		template: templates['demo/DemoWorkspace'],
 
