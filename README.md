@@ -1,4 +1,4 @@
-logicmonitor
+logicmonitor standard UI project template
 ============
 
 The standard ui project for logicmonitor based B2 framework
