@@ -266,7 +266,7 @@ h6 {
 }
 /* line 278, ../sass/common.scss */
 .top-nav .powered-by {
-  background: url('../images/powered_by.png?1414055891');
+  background: url('../images/powered_by.png?1414056631');
   float: left;
   display: inline-block;
   width: 188px;
@@ -292,8 +292,9 @@ h6 {
   width: 100%;
   height: 100%;
   position: relative;
+  overflow: auto;
 }
-/* line 304, ../sass/common.scss */
+/* line 305, ../sass/common.scss */
 .workspace-con .workspace .sidebar-con {
   position: absolute;
   left: 0;
@@ -301,19 +302,19 @@ h6 {
   height: 100%;
   z-index: 3;
 }
-/* line 312, ../sass/common.scss */
+/* line 313, ../sass/common.scss */
 .workspace-con .workspace .main-con {
   width: 100%;
   height: 100%;
   padding-left: 247px;
 }
-/* line 317, ../sass/common.scss */
+/* line 318, ../sass/common.scss */
 .workspace-con .workspace .main-con .page-wrapper {
   width: 100%;
   height: 100%;
   position: relative;
 }
-/* line 322, ../sass/common.scss */
+/* line 323, ../sass/common.scss */
 .workspace-con .workspace .main-con .page-wrapper .page-header {
   height: 61px;
   line-height: 61px;
@@ -322,25 +323,25 @@ h6 {
   position: relative;
   background: whitesmoke;
 }
-/* line 330, ../sass/common.scss */
+/* line 331, ../sass/common.scss */
 .workspace-con .workspace .main-con .page-wrapper .page-header h1 {
   font-size: 30px;
   font-weight: normal;
   float: left;
 }
-/* line 335, ../sass/common.scss */
+/* line 336, ../sass/common.scss */
 .workspace-con .workspace .main-con .page-wrapper .page-header h1 * {
   vertical-align: middle;
 }
-/* line 339, ../sass/common.scss */
+/* line 340, ../sass/common.scss */
 .workspace-con .workspace .main-con .page-wrapper .page-header h1 .page-name {
   font-size: 30px;
 }
-/* line 343, ../sass/common.scss */
+/* line 344, ../sass/common.scss */
 .workspace-con .workspace .main-con .page-wrapper .page-header h1 .page-manage {
   margin-left: 20px;
 }
-/* line 349, ../sass/common.scss */
+/* line 350, ../sass/common.scss */
 .workspace-con .workspace .main-con .page-wrapper .page-content {
   height: 100%;
   width: 100%;
@@ -351,7 +352,7 @@ h6 {
   top: 0;
 }
 
-/* line 364, ../sass/common.scss */
+/* line 365, ../sass/common.scss */
 .formError .formErrorContent {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -367,25 +368,25 @@ h6 {
   font-weight: bold;
   background: #ea262b;
 }
-/* line 374, ../sass/common.scss */
+/* line 375, ../sass/common.scss */
 .formError .formErrorArrow div {
   border: none;
   background: #ea262b;
 }
-/* line 378, ../sass/common.scss */
+/* line 379, ../sass/common.scss */
 .formError .formErrorArrow .line3 {
   border: none;
 }
-/* line 381, ../sass/common.scss */
+/* line 382, ../sass/common.scss */
 .formError .formErrorArrow .line2 {
   background: none;
 }
-/* line 384, ../sass/common.scss */
+/* line 385, ../sass/common.scss */
 .formError .formErrorArrow .line1 {
   background: none;
 }
 
-/* line 390, ../sass/common.scss */
+/* line 391, ../sass/common.scss */
 .bottom-action-area {
   position: absolute;
   bottom: 0;
@@ -396,33 +397,33 @@ h6 {
 }
 
 /* datetime picker */
-/* line 400, ../sass/common.scss */
+/* line 401, ../sass/common.scss */
 .ui-timepicker-div .ui-widget-header {
   margin-bottom: 8px;
 }
 
-/* line 401, ../sass/common.scss */
+/* line 402, ../sass/common.scss */
 .ui-timepicker-div dl {
   text-align: left;
 }
 
-/* line 402, ../sass/common.scss */
+/* line 403, ../sass/common.scss */
 .ui-timepicker-div dl dt {
   height: 25px;
   margin-bottom: -25px;
 }
 
-/* line 403, ../sass/common.scss */
+/* line 404, ../sass/common.scss */
 .ui-timepicker-div dl dd {
   margin: 0 10px 10px 65px;
 }
 
-/* line 404, ../sass/common.scss */
+/* line 405, ../sass/common.scss */
 .ui-timepicker-div td {
   font-size: 90%;
 }
 
-/* line 405, ../sass/common.scss */
+/* line 406, ../sass/common.scss */
 .ui-tpicker-grid-label {
   background: none;
   border: none;
@@ -430,61 +431,61 @@ h6 {
   padding: 0;
 }
 
-/* line 407, ../sass/common.scss */
+/* line 408, ../sass/common.scss */
 .ui-timepicker-rtl {
   direction: rtl;
 }
 
-/* line 408, ../sass/common.scss */
+/* line 409, ../sass/common.scss */
 .ui-timepicker-rtl dl {
   text-align: right;
 }
 
-/* line 409, ../sass/common.scss */
+/* line 410, ../sass/common.scss */
 .ui-timepicker-rtl dl dd {
   margin: 0 65px 10px 10px;
 }
 
-/* line 411, ../sass/common.scss */
+/* line 412, ../sass/common.scss */
 .ellips {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
-/* line 419, ../sass/common.scss */
+/* line 420, ../sass/common.scss */
 span.ellips {
   display: inline-block;
 }
 
-/* line 424, ../sass/common.scss */
+/* line 425, ../sass/common.scss */
 button[disabled], input[disabled] {
   opacity: 0.4;
 }
 
-/* line 428, ../sass/common.scss */
+/* line 429, ../sass/common.scss */
 .signin-content {
   width: 515px;
   margin: auto;
   padding-top: 60px;
 }
-/* line 432, ../sass/common.scss */
+/* line 433, ../sass/common.scss */
 .signin-content .signin-logo {
   width: 288px;
   height: 56px;
   margin: 0 auto 25px auto;
   background: url('../images/signin_logo.png?1414055891');
 }
-/* line 439, ../sass/common.scss */
+/* line 440, ../sass/common.scss */
 .signin-content .section-box {
   padding: 55px 100px;
 }
-/* line 442, ../sass/common.scss */
+/* line 443, ../sass/common.scss */
 .signin-content .section-box .section-content {
   padding: 0;
 }
 
-/* line 447, ../sass/common.scss */
+/* line 448, ../sass/common.scss */
 .page-foot {
   margin-top: 20px;
   text-align: center;
