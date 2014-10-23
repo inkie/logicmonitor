@@ -1,9 +1,9 @@
 logicmonitor
 ============
 
-The standard ui project for logicmonitor based B2
+The standard ui project for logicmonitor based B2 framework
 
-For Developer
+For javascript Developer
 ============
 Make sure you have node.js and  Compass installed
 Then run following commands:
@@ -13,15 +13,38 @@ npm install
 npm install -g grunt-cli
 ```
 
+For CSS Developer
+============
+We use Compass to pre compile the css, and our css source files are written use scss/sass, you can install the CSS development environment by following steps
+
+1. Make sure the Ruby is installed, you can use RVM to manage ruby versions
+
+```
+$ \curl -sSL https://get.rvm.io | bash -s stable
+```
+
+2. Install the bundler
+
+```
+$ gem install bundler
+```
+
+3. Go to project directory, run following command to install all tools we need to develop the css
+
+```
+$ bundle
+```
+
+
 grunt commands
 =============
 
 ```
-  grunt    // the default command is used to release the distribution
+  grunt    // the default command is used to release the distribution package
 ```
 
 ```
-  grunt debug   // this command is used in debug mode(developement stage)
+  grunt debug   // this command is used in debug mode(developement stage), run this command when you have html template files added, removed
 ```
 
 ```
