@@ -1,10 +1,14 @@
 logicmonitor
 ============
 
-The standard ui project for logicmonitor based B2 framework, to run just start a http-server(static files server) in the project directory, For example, we can use the [http-server](https://github.com/nodeapps/http-server)
+The standard ui project for logicmonitor based B2 framework
+
+To run just start a http-server(static files server) in the project directory, For example, we can use the [http-server](https://github.com/nodeapps/http-server)
 
 ```
-npm 
+$ npm install -g http-server
+$ cd logicmonitor
+$ http-server
 ```
 
 
