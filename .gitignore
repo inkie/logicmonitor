@@ -3,3 +3,6 @@ node_modules
 *.iml
 .DS_Store
 .sass-cache
+META-INF
+WEB-INF
+
