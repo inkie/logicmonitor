@@ -1,62 +1,53 @@
 define([
 	'core',
-	'signup/templates',
-	'utils',
+	'profile/templates',
+	'modelurls',
+	'lmblockui',
 	'lmmsgbox',
 	'commons/logicmonitor/models/UserModel',
-	'lmblockui',
 	'jq-validationEngine-en'
-], function (LM, templates, utils, MessageBox, UserModel, BlockUI) {
+], function (LM, templates, modelUrls, BlockUI, MessageBox, UserModel) {
 
 	return LM.View.extend({
-		className: 'workspace signup-workspace',
-
-		template: templates['signup/SignupWorkspace'],
+		template: templates['profile/ChangePassword'],
 
 		events: {
-			'click .btn-signup': '_onClickSignup'
+			'click .btn-change': '_onChangePass'
 		},
 
 		appEvents: {
 		},
 
 		initialize: function (options) {
-			this.module = options.module;
 			this.blockUI = new BlockUI();
 		},
 
 		render: function () {
-			var module = this.module;
-
 			this.$el.html(this.template());
-
 			this.$('.validationEngineContainer').validationEngine({
 			});
 		},
 
-		_onClickSignup: function (e) {
+		_onChangePass: function (e) {
+			var that = this;
 			e.preventDefault();
 
-			var that = this;
-
 			if (this.$('.validationEngineContainer').validationEngine('validate')) {
-				var data = this.serializeForm();
-
 				this.blockUI.block({
-					message: 'Signing up...'
 				});
 
-				this._signup(data, function (err, authData) {
+				var data = this.serializeForm();
+
+				this._changePass(data, function (err) {
 					that.blockUI.unBlock();
 					if (!err) {
+						LM.logoffUser();
 						new MessageBox({
 							type: 'alert',
-							title: 'Sign up successfully',
+							title: 'Password change successfully',
 							width: 600,
 							bodyData: {
-								msg: '<p style="line-height: 1.5">Thanks for registering! An account activation message has been sent to the email address <strong style="font-size: 16px;color:red;">' +
-									data.email +
-									'</strong> The activation link will only be active for 24 hours from the time of registration.' +
+								msg: '<p style="line-height: 1.5">You password has been changed, please ' +
 									'<a href="login.html" style="font-size: 16px;">Go to log in!</a></p>',
 								allowHTML: true
 							}
@@ -66,20 +57,21 @@ define([
 							}, 0);
 						});
 					} else {
-						MessageBox.alert( err.status + ':' + err.errmsg, 'Sign up error');
+						MessageBox.alert( err.status + ':' + err.errmsg, 'Error');
 					}
 				});
 			}
 		},
 
-		_signup: function (data, cb) {
+		_changePass: function (data, cb) {
+			var loginUser = LM.getLoginUser();
 			var user = new UserModel({
-				username: data.username,
-				email: data.email,
-				password: data.password
+				password: data.password,
+				id: loginUser.id
 			});
 
-			user.save(data, {
+			user.save(null, {
+				patch: true,
 				success: function (model, response) {
 					cb(null, model.toJSON());
 				},

@@ -2069,10 +2069,11 @@ var requirejs, require, define;
 
 require.config({
     urlArgs: 'v=',
-	baseUrl: '/',
+	baseUrl: '',
 	waitSeconds: 0,
 	packages: ['commons/logicmonitor/templates', 'commons/logicmonitor/controls/templates', 'demo/templates',
-		'demo/views/sub', 'login/templates', 'password/templates', 'signup/templates', 'index/templates'],
+		'demo/views/sub', 'login/templates', 'password/templates', 'signup/templates', 'index/templates',
+		'profile/templates'],
 	paths: {
         'commons/logicmonitor/partials_compiled': 'commons/logicmonitor/templates/.auto_partials',
         'commons/logicmonitor/templates_compiled': 'commons/logicmonitor/templates/.auto_templates',
@@ -2094,6 +2095,9 @@ require.config({
 
 		'index/partials_compiled': 'index/templates/.auto_partials',
 		'index/templates_compiled': 'index/templates/.auto_templates',
+
+		'profile/partials_compiled': 'profile/templates/.auto_partials',
+		'profile/templates_compiled': 'profile/templates/.auto_templates',
 
 		'core': 'commons/logicmonitor/core/core',
 		'utils': 'commons/logicmonitor/core/utils',

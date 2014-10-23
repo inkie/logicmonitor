@@ -20,9 +20,10 @@ define([
 
 		render: function () {
 			var module = this.module;
+			var loginUser = LM.getLoginUser();
 
 			this.$el.html(this.template({
-				userName: window.securityUserName
+				userName: loginUser.username
 			}));
 		}
 	});

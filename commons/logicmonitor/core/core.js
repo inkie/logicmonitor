@@ -16,9 +16,11 @@ define([
      * localStorage.demo         demo page
      */
 	var localStorage = {};
+	var sessionStorage = {};
 
 	try {
 		localStorage = window.localStorage;
+		sessionStorage = window.sessionStorage;
 	} catch(e) {
 	}
 
@@ -26,8 +28,9 @@ define([
 
     var LM = window.LM || {
         localStorage: localStorage,
+	    sessionStorage: sessionStorage,
 	    projectName: projectName,
-	    apiRoot: projectName + '/rest',
+	    apiRoot: '/' + projectName + '/rest',
 	    passRemTime: 30 * 24 * 3600 * 1000,
 	    sessionTimeout: 30 * 60 * 1000
      };
@@ -40,16 +43,25 @@ define([
 		}
 	};
 
+	LM.logoffUser = function (goToLogin) {
+		localStorage.securityUser = '';
+		sessionStorage.securityUser = '';
+		if (goToLogin) {
+			LM.toLoginPage();
+		}
+	};
+
 	LM.getLoginUser = function () {
 		var user = null;
 		var curTime = new Date().getTime();
 
 		try {
-			user = JSON.parse(localStorage.securityUser);
+			user = JSON.parse(localStorage.securityUser || sessionStorage.securityUser);
 
 			if (user.username && user.securityToken && user.timestamp && user.activeTimestamp) {
-				if (user.remember) {
-					if (curTime > user.timestamp && curTime - user.timestamp < LM.passRemTime) {
+				if (user.rem) {
+					if ((curTime > user.timestamp && curTime - user.timestamp < LM.passRemTime) ||
+						(curTime > user.activeTimestamp && curTime - user.activeTimestamp < LM.sessionTimeout)) {
 						user = user;
 					} else {
 						user = null;
@@ -69,8 +81,8 @@ define([
 		}
 
 		if (user == null) {
-			if (localStorage.__debug__ == '1') { // the debug flag
-				user = localStorage.securityUser = JSON.stringify({
+			if (sessionStorage.__debug__ == '1') { // the debug flag
+				user = sessionStorage.securityUser = JSON.stringify({
 					id: '__debug__',
 					username: 'test-user',
 					securityToken: 'xxxxx',
@@ -79,15 +91,37 @@ define([
 				});
 			} else {
 				localStorage.securityUser = '';
+				sessionStorage.securityUser = '';
 			}
 		} else {
-			if (localStorage.__debug__ != '1' && user.id == '__debug__') {
+			if (sessionStorage.__debug__ != '1' && user.id == '__debug__') {
+				sessionStorage.securityUser = '';
 				localStorage.securityUser = '';
 				user = null;
 			}
 		}
 
-		return user;
+		return _.cloneDeep(user);
+	};
+
+	LM.setLoginUser = function (userData, isRem) {
+		var timestamp = new Date().getTime();
+		var data = JSON.stringify({
+			username: userData.username,
+			id: userData.id,
+			securityToken: userData.securityToken,
+			timestamp:  timestamp,
+			activeTimestamp: timestamp,
+			rem: isRem
+		});
+
+		if (isRem) {
+			LM.localStorage.securityUser = data;
+			LM.sessionStorage.securityUser = '';
+		} else {
+			LM.localStorage.securityUser = '';
+			LM.sessionStorage.securityUser = data;
+		}
 	};
 
 	LM.utils = utils;
@@ -155,7 +189,7 @@ define([
 				if ($.isFunction(success)) {
 					success(data || {});
 				}
-			} else if (!data || data.status !== 200) {
+			} else if (!data || data.status !== 1200) {
 				if (data && data.status === 401) {
 					LM.toLoginPage();
 				} else if ($.isFunction(error)) {
@@ -182,14 +216,14 @@ define([
 			} else if ($.isFunction(error)) {
 				error({
 					status: jqXHR.status || 0,
-					errmsg: textStatus
+					errmsg: jqXHR.statusText
 				});
 			} else {
 				// the default error function if caller not define it
 				require(['lmmsgbox'], function (MessageBox) {
 					var response = {
 						status: jqXHR.status || 0,
-						errmsg: textStatus
+						errmsg: jqXHR.statusText
 					};
 
 					MessageBox.alert( 'Error - status(' + response.status + ' : ' + jqXHR.statusText + ') errmsg:' + response.errmsg);

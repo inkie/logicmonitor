@@ -1,8 +1,8 @@
 define([
 	'jquery',
 	'backbone',
-    './views/PasswordWorkspaceView'
-], function ($, Backbone, PasswordWorkspaceView) {
+    './views/ProfileWorkspaceView'
+], function ($, Backbone, ProfileWorkspaceView) {
 
 	return Backbone.Router.extend({
 		routes: {
@@ -13,13 +13,13 @@ define([
 		},
 
 		showWorkspace: function (module) {
-			module = module || 'send';
+			module = module || 'profile';
 
 			if (this.appView) {
 				this.appView.remove();
 			}
 
-			this.appView = new PasswordWorkspaceView({
+			this.appView = new ProfileWorkspaceView({
 				module: module
 			});
 

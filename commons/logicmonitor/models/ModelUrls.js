@@ -14,6 +14,7 @@ define([
 		'logoff': function (userId) {
 			return apiRoot + '/users/' + userId + '/logoff';
 		},
-		'forgotpass': apiRoot + '/users/forgotpass'
+		'forgotpass': apiRoot + '/users/forgotpass',
+		'resetpass': apiRoot + '/users/resetpass'
 	};
 });

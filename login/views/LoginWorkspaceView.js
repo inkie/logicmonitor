@@ -2,8 +2,9 @@ define([
 	'core',
 	'login/templates',
 	'modelurls',
-	'lmmsgbox'
-], function (LM, templates, modelUrls, MessageBox) {
+	'lmmsgbox',
+	'lmblockui'
+], function (LM, templates, modelUrls, MessageBox, BlockUI) {
 
 	return LM.View.extend({
 		className: 'workspace login-workspace',
@@ -19,30 +20,31 @@ define([
 
 		initialize: function (options) {
 			this.module = options.module;
+			this.blockUI = new BlockUI();
 		},
 
 		render: function () {
 			var module = this.module;
 
-			this.$el.html(this.template({}));
+			this.$el.html(this.template({
+				activateSuccess: (location.search || '').indexOf('activate_success') > -1
+			}));
 		},
 
-		_onLogin: function () {
+		_onLogin: function (e) {
+			e.preventDefault();
+			var that = this;
 			var data = this.serializeForm();
 
+			this.blockUI.block({
+				message: 'Log in...'
+			});
+
 			this._login(data, function (err, userData) {
+				that.blockUI.unBlock();
 				if (!err) {
 					// Storage the user data in localstorage
-					var timestamp = new Date().getTime();
-					LM.localStorage.securityUser = JSON.stringify({
-						username: userData.username,
-						id: userData.id,
-						securityToken: userData.securityToken,
-						timestamp:  timestamp,
-						activeTimestamp: timestamp,
-						remember: data.rem
-					});
-
+					LM.setLoginUser(userData, data.rem);
 					location.href = 'index.html';
 				} else {
 					MessageBox.alert( err.status + ':' + err.errmsg, 'Log in error');

@@ -29,11 +29,10 @@ define([
 	'lmautocompletedropdown'
 ], function (_, B2, $, Handlebars, LM, utils, TopNavBarView, BlockUI) {
 	//require business js code begin
-	var page = /\/(.*?)\.html/.exec(window.location.pathname);
+	var page = /\/([^\/]*?)\.html/.exec(window.location.pathname);
 
 	if (!page || !page[1]) {
 		page = ['', 'index'];
-		return;
 	}
 
 	page = page[1];
@@ -50,7 +49,7 @@ define([
 				history.pushState({}, null, 'index.html');
 				utils.removeCssFile('commons/css/' + page + '.css');
 				page = 'index';
-				utils.loadCssFile('common/css/index.css');
+				utils.loadCssFile('commons/css/index.css');
 			} else {
 				location.href = 'index.html';
 				return;
