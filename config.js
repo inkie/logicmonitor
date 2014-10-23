@@ -1,9 +1,10 @@
 require.config({
-    urlArgs: 'v=' + new Date().getTime(),
-	baseUrl: '/',
+    urlArgs: 'v=',
+	baseUrl: '',
 	waitSeconds: 0,
 	packages: ['commons/logicmonitor/templates', 'commons/logicmonitor/controls/templates', 'demo/templates',
-		'demo/views/sub', 'login/templates', 'password/templates', 'signup/templates'],
+		'demo/views/sub', 'login/templates', 'password/templates', 'signup/templates', 'index/templates',
+		'profile/templates'],
 	paths: {
         'commons/logicmonitor/partials_compiled': 'commons/logicmonitor/templates/.auto_partials',
         'commons/logicmonitor/templates_compiled': 'commons/logicmonitor/templates/.auto_templates',
@@ -22,6 +23,12 @@ require.config({
 
 		'signup/partials_compiled': 'signup/templates/.auto_partials',
 		'signup/templates_compiled': 'signup/templates/.auto_templates',
+
+		'index/partials_compiled': 'index/templates/.auto_partials',
+		'index/templates_compiled': 'index/templates/.auto_templates',
+
+		'profile/partials_compiled': 'profile/templates/.auto_partials',
+		'profile/templates_compiled': 'profile/templates/.auto_templates',
 
 		'core': 'commons/logicmonitor/core/core',
 		'utils': 'commons/logicmonitor/core/utils',
@@ -44,6 +51,7 @@ require.config({
 		'moment': 'commons/3rdparty/moment',
 		'es5-shim': 'commons/3rdparty/es5-shim',
 		'jq-blockUI': 'commons/3rdparty/jquery.blockUI',
+		'firebase': 'https://cdn.firebase.com/js/client/1.1.2/firebase',
 
 		/*logicmonitor controls*/
 		'lmsidebar': 'commons/logicmonitor/controls/Sidebar',
@@ -84,6 +92,9 @@ require.config({
 		'jq-validationEngine-en': ['jq-validationEngine'],
 		'base64': {
 			exports: 'Base64'
+		},
+		'firebase': {
+			exports: 'Firebase'
 		}
 	},
 	map: {

@@ -6,8 +6,9 @@ define([
 	'b2',
     'lodash',
     'utils',
+	'backbone',
     'es5-shim'
-], function($, B2, _, utils) {
+], function($, B2, _, utils, Backbone) {
 
     /**
      * localStorage namespace define:
@@ -15,15 +16,113 @@ define([
      * localStorage.demo         demo page
      */
 	var localStorage = {};
+	var sessionStorage = {};
 
 	try {
 		localStorage = window.localStorage;
+		sessionStorage = window.sessionStorage;
 	} catch(e) {
 	}
 
+	var projectName = 'tpl1024';
+
     var LM = window.LM || {
-        localStorage: localStorage
+        localStorage: localStorage,
+	    sessionStorage: sessionStorage,
+	    projectName: projectName,
+	    apiRoot: '/' + projectName + '/rest',
+	    passRemTime: 30 * 24 * 3600 * 1000,
+	    sessionTimeout: 30 * 60 * 1000
      };
+
+	LM.toLoginPage = function () {
+		try {
+			window.top.location.href = 'login.html';
+		} catch (e) {
+			alert('Unauthorized, please relogin.');
+		}
+	};
+
+	LM.logoffUser = function (goToLogin) {
+		localStorage.securityUser = '';
+		sessionStorage.securityUser = '';
+		if (goToLogin) {
+			LM.toLoginPage();
+		}
+	};
+
+	LM.getLoginUser = function () {
+		var user = null;
+		var curTime = new Date().getTime();
+
+		try {
+			user = JSON.parse(localStorage.securityUser || sessionStorage.securityUser);
+
+			if (user.username && user.securityToken && user.timestamp && user.activeTimestamp) {
+				if (user.rem) {
+					if ((curTime > user.timestamp && curTime - user.timestamp < LM.passRemTime) ||
+						(curTime > user.activeTimestamp && curTime - user.activeTimestamp < LM.sessionTimeout)) {
+						user = user;
+					} else {
+						user = null;
+					}
+				} else {
+					if (curTime > user.activeTimestamp && curTime - user.activeTimestamp < LM.sessionTimeout) {
+						user = user;
+					} else {
+						user = null;
+					}
+				}
+			} else {
+				user = null;
+			}
+		} catch (e) {
+
+		}
+
+		if (user == null) {
+			if (sessionStorage.__debug__ == '1') { // the debug flag
+				user = sessionStorage.securityUser = JSON.stringify({
+					id: '__debug__',
+					username: 'test-user',
+					securityToken: 'xxxxx',
+					timestamp: curTime,
+					activeTimestamp: curTime
+				});
+			} else {
+				localStorage.securityUser = '';
+				sessionStorage.securityUser = '';
+			}
+		} else {
+			if (sessionStorage.__debug__ != '1' && user.id == '__debug__') {
+				sessionStorage.securityUser = '';
+				localStorage.securityUser = '';
+				user = null;
+			}
+		}
+
+		return _.cloneDeep(user);
+	};
+
+	LM.setLoginUser = function (userData, isRem) {
+		var timestamp = new Date().getTime();
+		var data = JSON.stringify({
+			username: userData.username,
+			id: userData.id,
+			securityToken: userData.securityToken,
+			timestamp:  timestamp,
+			activeTimestamp: timestamp,
+			rem: isRem
+		});
+
+		if (isRem) {
+			LM.localStorage.securityUser = data;
+			LM.sessionStorage.securityUser = '';
+		} else {
+			LM.localStorage.securityUser = '';
+			LM.sessionStorage.securityUser = data;
+		}
+	};
 
 	LM.utils = utils;
 
@@ -43,6 +142,97 @@ define([
     LM.ENTER_KEY = 13;
     LM.TAB_KEY   = 9;
 
+
+	/**
+	 * Define LM.rajax and rewrite Backbone.ajax
+	 * LM.rajax contains the authorization logics with the Rest API, so, if you use Rest API, please make sure to
+	 * call LM.rajax
+	 * @type {rajax}
+	 */
+	Backbone.ajax = LM.rajax = function (options) {
+		var timeStamp = new Date().getTime() - (window.timeStampDelta || 0);
+
+		options.url = utils.buildUrl(options.url, {
+			timestamp: timeStamp
+		});
+
+		options.dataType = options.dataType || 'json';
+
+		if(options.contentType === false){
+			options.contentType = false;
+		} else {
+			options.contentType = options.contentType || 'application/json';
+		}
+
+		options.cache = options.cache === true ? true : false;
+		options.beforeSend = options.beforeSend || function(xhr) {
+			var securityUser = LM.getLoginUser();
+
+			if (securityUser) {
+				securityUser.activeTimestamp = timeStamp;
+				xhr.setRequestHeader('Authorization',
+					utils.getAuthToken(timeStamp, securityUser.username, securityUser.securityToken, true));
+			}
+
+			if(options.customHeaders){
+				_.each(options.customHeaders, function(value, key){
+					xhr.setRequestHeader(key, value);
+				});
+			}
+		};
+
+		var success = options.success,
+			error = options.error;
+
+		options.success = function(data, textStatus, jqXHR) {
+			if (jqXHR.status == 204) {
+				if ($.isFunction(success)) {
+					success(data || {});
+				}
+			} else if (!data || data.status !== 1200) {
+				if (data && data.status === 401) {
+					LM.toLoginPage();
+				} else if ($.isFunction(error)) {
+					error(data || {});
+				} else {
+					// the default error function if caller not define it
+					require(['lmmsgbox'], function (MessageBox) {
+						var response = data || {};
+
+						MessageBox.alert((!response.errmsg || response.errmsg == 'error') ?
+							('Error - status(' + response.status + ' : ' + jqXHR.statusText + ') errmsg:' + response.errmsg) : response.errmsg);
+					});
+				}
+			} else {
+				if ($.isFunction(success)) {
+					success(data || {});
+				}
+			}
+		};
+
+		options.error = function(jqXHR, textStatus, errorThrown) {
+			if (jqXHR.status === 401) {
+				LM.toLoginPage();
+			} else if ($.isFunction(error)) {
+				error({
+					status: jqXHR.status || 0,
+					errmsg: jqXHR.statusText
+				});
+			} else {
+				// the default error function if caller not define it
+				require(['lmmsgbox'], function (MessageBox) {
+					var response = {
+						status: jqXHR.status || 0,
+						errmsg: jqXHR.statusText
+					};
+
+					MessageBox.alert( 'Error - status(' + response.status + ' : ' + jqXHR.statusText + ') errmsg:' + response.errmsg);
+				});
+			}
+		};
+
+		return $.ajax(options);
+	};
 
 	/**
 	 * Define LM.Model as the base model for all models
