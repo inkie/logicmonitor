@@ -14,12 +14,13 @@ $ http-server
 
 For javascript Developer
 ============
-Make sure you have node.js and  Compass installed
+Make sure you have node.js installed
 Then run following commands:
 
 ```
-npm install
 npm install -g grunt-cli
+cd logicmonitor
+npm install
 ```
 
 For CSS Developer
