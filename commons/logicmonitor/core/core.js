@@ -32,7 +32,7 @@ define([
 	    projectName: projectName,
 	    apiRoot: '/' + projectName + '/rest',
 	    passRemTime: 30 * 24 * 3600 * 1000,
-	    sessionTimeout: 30 * 60 * 1000
+	    sessionTimeout:  30 * 60 * 1000
      };
 
 	LM.toLoginPage = function () {
@@ -101,7 +101,7 @@ define([
 			}
 		}
 
-		return _.cloneDeep(user);
+		return user;
 	};
 
 	LM.setLoginUser = function (userData, isRem) {
@@ -110,9 +110,9 @@ define([
 			username: userData.username,
 			id: userData.id,
 			securityToken: userData.securityToken,
-			timestamp:  timestamp,
-			activeTimestamp: timestamp,
-			rem: isRem
+			timestamp:  userData.timestamp || timestamp,
+			activeTimestamp: userData.activeTimestamp || timestamp,
+			rem: !!isRem
 		});
 
 		if (isRem) {
@@ -123,6 +123,42 @@ define([
 			LM.sessionStorage.securityUser = data;
 		}
 	};
+
+
+	LM.refreshActiveTimestamp = function (timestamp) {
+		var timestamp = timestamp || new Date().getTime();
+
+		var loginUser = LM.getLoginUser();
+
+		if (loginUser) {
+			loginUser.activeTimestamp = timestamp;
+			LM.setLoginUser(loginUser, loginUser.rem);
+			return true;
+		}
+
+		return false;
+	};
+
+	$(document.body).on('mousemove.sessionActive', _.throttle(function () {
+		var page = /\/([^\/]*?)\.html/.exec(window.location.pathname);
+
+		if (!page || !page[1]) {
+			page = ['', 'index'];
+		}
+
+		page = page[1];
+
+		if(!LM.refreshActiveTimestamp() && page != 'login' && page != 'password' && page != 'signup') {
+			$(document.body).off('mousemove.sessionActive');
+			require(['lmmsgbox'], function (MessageBox) {
+				MessageBox.alert('You have no activities for ' + Math.round(LM.sessionTimeout / 60000) + ' minutes, Please login again!').on('dialog:closing', function () {
+					setTimeout(function () {
+						location.href = 'login.html';
+					}, 0);
+				});
+			});
+		}
+	}, 300));
 
 	LM.utils = utils;
 
@@ -166,10 +202,10 @@ define([
 
 		options.cache = options.cache === true ? true : false;
 		options.beforeSend = options.beforeSend || function(xhr) {
-			var securityUser = LM.getLoginUser();
+			var securityUser = LM.getLoginUser(true);
 
 			if (securityUser) {
-				securityUser.activeTimestamp = timeStamp;
+				LM.refreshActiveTimestamp(timeStamp);
 				xhr.setRequestHeader('Authorization',
 					utils.getAuthToken(timeStamp, securityUser.username, securityUser.securityToken, true));
 			}
@@ -191,7 +227,7 @@ define([
 				}
 			} else if (!data || data.status !== 1200) {
 				if (data && data.status === 401) {
-					LM.toLoginPage();
+					LM.logoffUser(true);
 				} else if ($.isFunction(error)) {
 					error(data || {});
 				} else {
@@ -212,7 +248,7 @@ define([
 
 		options.error = function(jqXHR, textStatus, errorThrown) {
 			if (jqXHR.status === 401) {
-				LM.toLoginPage();
+				LM.logoffUser(true);
 			} else if ($.isFunction(error)) {
 				error({
 					status: jqXHR.status || 0,
