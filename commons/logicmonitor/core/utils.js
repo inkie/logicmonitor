@@ -92,7 +92,7 @@ define([
 	     * @param timestamp
 	     */
 	    getAuthToken: function (timestamp, u, p, useInHttpHeader) {
-		    var secUser = u || window.securityUsername, secToken = p || window.securityToken;
+		    var secUser = u, secToken = p;
 		    var base64Token = Base64.encode(secUser + ':' + md5(secToken + timestamp));
 
 		    if (useInHttpHeader) {
