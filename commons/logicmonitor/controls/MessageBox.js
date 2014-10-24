@@ -55,7 +55,7 @@ define([
 	    }
     }, {
 	    alert: function (msg, title) {
-		    new MessageBox({
+		    return new MessageBox({
 			    type: 'alert',
 			    title: title,
 			    bodyData: {
@@ -65,7 +65,7 @@ define([
 	    },
 
 	    confirm: function (msg, callback, title) {
-		    new MessageBox({
+		    return new MessageBox({
 			    type: 'confirm',
 			    title: title,
 			    bodyData: {
@@ -76,7 +76,7 @@ define([
 	    },
 
 	    prompt: function (msg, callback, title, initValue) {
-		    new MessageBox({
+		    return new MessageBox({
 			    type: 'prompt',
 			    title: title,
 			    bodyData: {
