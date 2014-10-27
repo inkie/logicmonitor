@@ -19,7 +19,7 @@ define([
             this.$el.width(options.width || 240 );
             this.template = options.template;
 	        this.templateData = options.templateData || {};
-            this._super(arguments);
+            this._super(options);
             this.render();
         },
 

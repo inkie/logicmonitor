@@ -256,7 +256,7 @@ h6 {
 }
 /* line 267, ../sass/common.scss */
 .top-nav .logo {
-  background: url('../images/logo.png?1414055891');
+  background: url('../images/logo.png?1414140492');
   float: left;
   display: inline-block;
   width: 64px;
@@ -266,7 +266,7 @@ h6 {
 }
 /* line 278, ../sass/common.scss */
 .top-nav .powered-by {
-  background: url('../images/powered_by.png?1414140470');
+  background: url('../images/powered_by.png?1414140790');
   float: left;
   display: inline-block;
   width: 188px;
@@ -474,7 +474,7 @@ button[disabled], input[disabled] {
   width: 288px;
   height: 56px;
   margin: 0 auto 25px auto;
-  background: url('../images/signin_logo.png?1414055891');
+  background: url('../images/signin_logo.png?1414140492');
 }
 /* line 440, ../sass/common.scss */
 .signin-content .section-box {
