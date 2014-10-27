@@ -10,6 +10,7 @@ define([
         },
 
         initialize: function (options) {
+	        this.options = options;
             if (!this.options.triggerEl) {
                 throw new Error('You must specify a trigger for dropdown.');
             }

@@ -5,13 +5,15 @@ define([
     './AutoCompleteView',
 	'./ButtonsView',
 	'./BlockUIView',
-	'./CriteriaTableView'
-], function (AutoCompleteView, ButtonsView, BlockUIView, CriteriaTableView) {
+	'./CriteriaTableView',
+	'./DropDownMenuView'
+], function (AutoCompleteView, ButtonsView, BlockUIView, CriteriaTableView, DropDownMenuView) {
 
     return {
         'auto-complete': AutoCompleteView,
 	    'buttons': ButtonsView,
 	    'block-ui': BlockUIView,
-	    'criteria-table': CriteriaTableView
+	    'criteria-table': CriteriaTableView,
+	    'dropdown-menu': DropDownMenuView
     };
 });
