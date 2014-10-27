@@ -23,7 +23,7 @@
 }
 /* line 14, ../sass/controls/_tab.scss */
 .lm-tab .ui-tabs-nav {
-  background: whitesmoke;
+  background: #f5f5f5;
   border: none;
   padding: 5px 0 0 15px;
   overflow: hidden;
@@ -31,7 +31,7 @@
 }
 /* line 20, ../sass/controls/_tab.scss */
 .lm-tab .ui-tabs-nav li {
-  border: solid 1px whitesmoke;
+  border: solid 1px #f5f5f5;
   border-radius: 4px;
   background: none;
   position: relative;
@@ -150,8 +150,9 @@
 /* line 86, ../sass/controls/_table.scss */
 .lm-table th.sortable {
   cursor: pointer;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
   -webkit-user-select: none;
-  -moz-user-select: none;
   user-select: none;
 }
 /* line 90, ../sass/controls/_table.scss */
@@ -162,19 +163,17 @@
 /* line 96, ../sass/controls/_table.scss */
 .lm-table th.sortable.asc .gray-arrow {
   display: inline-block;
-  -webkit-transform: rotate(-180deg);
   -moz-transform: rotate(-180deg);
   -ms-transform: rotate(-180deg);
-  -o-transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
   transform: rotate(-180deg);
 }
 /* line 103, ../sass/controls/_table.scss */
 .lm-table th.sortable.desc .gray-arrow {
   display: inline-block;
-  -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
 }
 /* line 112, ../sass/controls/_table.scss */
@@ -293,8 +292,9 @@
 }
 /* line 23, ../sass/controls/_expand-table.scss */
 .lm-expand-table td.col-expand-btn {
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
   -webkit-user-select: none;
-  -moz-user-select: none;
   user-select: none;
   border-right: none;
 }
@@ -304,25 +304,23 @@
 }
 /* line 30, ../sass/controls/_expand-table.scss */
 .lm-expand-table td.col-expand-btn .gray-arrow {
-  -webkit-transition: -webkit-transform, 0.15s, ease-in;
   -moz-transition: -moz-transform, 0.15s, ease-in;
   -o-transition: -o-transform, 0.15s, ease-in;
+  -webkit-transition: -webkit-transform, 0.15s, ease-in;
   transition: transform, 0.15s, ease-in;
 }
 /* line 32, ../sass/controls/_expand-table.scss */
 .lm-expand-table td.col-expand-btn .gray-arrow, .lm-expand-table td.col-expand-btn .gray-arrow.right {
-  -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
 /* line 36, ../sass/controls/_expand-table.scss */
 .lm-expand-table td.col-expand-btn .gray-arrow.down {
-  -webkit-transform: rotate(0);
   -moz-transform: rotate(0);
   -ms-transform: rotate(0);
-  -o-transform: rotate(0);
+  -webkit-transform: rotate(0);
   transform: rotate(0);
 }
 /* line 43, ../sass/controls/_expand-table.scss */
@@ -485,8 +483,8 @@
   border-right: 1px solid #ccc;
   background: #e1e1e1;
   position: relative;
-  -webkit-box-shadow: 1px 0 5px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 1px 0 5px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 1px 0 5px rgba(0, 0, 0, 0.15);
   box-shadow: 1px 0 5px rgba(0, 0, 0, 0.15);
 }
 /* line 12, ../sass/controls/_sidebar.scss */
@@ -500,18 +498,16 @@
   display: block;
   width: 21px;
   height: 27px;
-  -webkit-border-radius: 5px 2px 2px 5px;
   -moz-border-radius: 5px 2px 2px 5px;
-  -ms-border-radius: 5px 2px 2px 5px;
-  -o-border-radius: 5px 2px 2px 5px;
+  -webkit-border-radius: 5px;
   border-radius: 5px 2px 2px 5px;
   border: solid 1px #bbbbbb;
   background: #f0f0f0;
   position: absolute;
   right: -5px;
   top: 8px;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   z-index: 10;
@@ -524,10 +520,8 @@
 }
 /* line 38, ../sass/controls/_sidebar.scss */
 .side-toggle.sidebar-expand {
-  -webkit-border-radius: 2px 5px 5px 2px;
   -moz-border-radius: 2px 5px 5px 2px;
-  -ms-border-radius: 2px 5px 5px 2px;
-  -o-border-radius: 2px 5px 5px 2px;
+  -webkit-border-radius: 2px;
   border-radius: 2px 5px 5px 2px;
   right: -10px;
 }
@@ -625,10 +619,8 @@
 .lm-button, button.lm-button, a.lm-button {
   font-size: 14px;
   text-decoration: none;
-  -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
+  -webkit-border-radius: 3px;
   border-radius: 3px;
   display: inline-block;
   border: none;
@@ -669,10 +661,9 @@
 }
 /* line 15, ../sass/controls/_buttons.scss */
 .lm-button.purple:active, button.lm-button.purple:active, a.lm-button.purple:active {
-  -webkit-transform: translate(0, 2px);
   -moz-transform: translate(0, 2px);
   -ms-transform: translate(0, 2px);
-  -o-transform: translate(0, 2px);
+  -webkit-transform: translate(0, 2px);
   transform: translate(0, 2px);
   border-bottom: 1px solid #33033e;
 }
@@ -692,10 +683,9 @@
 }
 /* line 15, ../sass/controls/_buttons.scss */
 .lm-button.blue:active, button.lm-button.blue:active, a.lm-button.blue:active {
-  -webkit-transform: translate(0, 2px);
   -moz-transform: translate(0, 2px);
   -ms-transform: translate(0, 2px);
-  -o-transform: translate(0, 2px);
+  -webkit-transform: translate(0, 2px);
   transform: translate(0, 2px);
   border-bottom: 1px solid #127ea5;
 }
@@ -707,7 +697,7 @@
 }
 /* line 7, ../sass/controls/_buttons.scss */
 .lm-button.gray:hover, button.lm-button.gray:hover, a.lm-button.gray:hover {
-  background: whitesmoke;
+  background: #f5f5f5;
 }
 /* line 11, ../sass/controls/_buttons.scss */
 .lm-button.gray[disabled], button.lm-button.gray[disabled], a.lm-button.gray[disabled] {
@@ -715,10 +705,9 @@
 }
 /* line 15, ../sass/controls/_buttons.scss */
 .lm-button.gray:active, button.lm-button.gray:active, a.lm-button.gray:active {
-  -webkit-transform: translate(0, 2px);
   -moz-transform: translate(0, 2px);
   -ms-transform: translate(0, 2px);
-  -o-transform: translate(0, 2px);
+  -webkit-transform: translate(0, 2px);
   transform: translate(0, 2px);
   border-bottom: 1px solid #333333;
 }
@@ -738,22 +727,21 @@
 }
 /* line 15, ../sass/controls/_buttons.scss */
 .lm-button.green:active, button.lm-button.green:active, a.lm-button.green:active {
-  -webkit-transform: translate(0, 2px);
   -moz-transform: translate(0, 2px);
   -ms-transform: translate(0, 2px);
-  -o-transform: translate(0, 2px);
+  -webkit-transform: translate(0, 2px);
   transform: translate(0, 2px);
   border-bottom: 1px solid #467034;
 }
 /* line 68, ../sass/controls/_buttons.scss */
 .lm-button.animate, button.lm-button.animate, a.lm-button.animate {
-  -webkit-transition: all 0.1s;
   -moz-transition: all 0.1s;
   -o-transition: all 0.1s;
+  -webkit-transition: all 0.1s;
   transition: all 0.1s;
 }
 
-/* line 13, ../sass/controls/_form-controls.scss */
+/* line 4, ../sass/controls/_form-controls.scss */
 body input[type="text"],
 body input[type="password"],
 body input[type="date"],
@@ -768,21 +756,19 @@ body input[type="url"], body textarea {
   background-color: white;
   font-family: inherit;
   border: 1px solid #cccccc;
-  -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
+  -webkit-border-radius: 2px;
   border-radius: 2px;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   color: rgba(0, 0, 0, 0.75);
   display: block;
   height: 34px;
   width: 100%;
-  -webkit-transition: all 0.15s linear;
   -moz-transition: all 0.15s linear;
   -o-transition: all 0.15s linear;
+  -webkit-transition: all 0.15s linear;
   transition: all 0.15s linear;
   font-size: 16px;
 }
@@ -806,10 +792,8 @@ body input[type="url"], body textarea {
 .styled-checkbox label {
   background: #ffffff;
   border: 1px solid #CCCCCC;
-  -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
+  -webkit-border-radius: 2px;
   border-radius: 2px;
   cursor: pointer;
   height: 18px;
@@ -817,8 +801,8 @@ body input[type="url"], body textarea {
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
 }
 /* line 55, ../sass/controls/_form-controls.scss */
@@ -835,10 +819,9 @@ body input[type="url"], body textarea {
   border: 3px solid rgba(0, 0, 0, 0.75);
   border-top: none;
   border-right: none;
-  -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
 /* line 71, ../sass/controls/_form-controls.scss */
@@ -848,7 +831,7 @@ body input[type="url"], body textarea {
 }
 /* line 76, ../sass/controls/_form-controls.scss */
 .styled-checkbox input[type=checkbox]:checked + label:after {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
 /* line 80, ../sass/controls/_form-controls.scss */
@@ -858,7 +841,7 @@ body input[type="url"], body textarea {
 }
 /* line 83, ../sass/controls/_form-controls.scss */
 .styled-checkbox input:disabled + label:hover::after {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
 /* line 88, ../sass/controls/_form-controls.scss */
@@ -879,13 +862,11 @@ body input[type="url"], body textarea {
 .styled-select {
   background: #ffffff;
   border: 1px solid #cccccc;
-  -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
+  -webkit-border-radius: 2px;
   border-radius: 2px;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
   height: 34px;
   width: 100%;
@@ -894,12 +875,10 @@ body input[type="url"], body textarea {
 }
 /* line 111, ../sass/controls/_form-controls.scss */
 .styled-select select {
-  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+  background: none repeat scroll 0 0 transparent;
   border: medium none;
-  -webkit-border-radius: 0;
   -moz-border-radius: 0;
-  -ms-border-radius: 0;
-  -o-border-radius: 0;
+  -webkit-border-radius: 0;
   border-radius: 0;
   height: 100%;
   line-height: 1;
@@ -934,13 +913,11 @@ body input[type="url"], body textarea {
   height: 100%;
   background: #ffffff;
   border: 1px solid #cccccc;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
-  -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  -webkit-border-radius: 10px;
   border-radius: 10px;
   text-align: center;
 }
@@ -954,10 +931,8 @@ body input[type="url"], body textarea {
   margin-left: -5px;
   width: 10px;
   height: 10px;
-  -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+  -webkit-border-radius: 5px;
   border-radius: 5px;
   background: transparent;
   display: inline-block;
@@ -1003,15 +978,15 @@ body input[type="url"], body textarea {
   border: solid 1px #ccc;
   border-radius: 2px;
   padding: 1px 30px 0 0;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
 }
 /* line 208, ../sass/controls/_form-controls.scss */
 .styled-date-range input[type="text"], .styled-lookup input[type="text"], .styled-time input[type="text"] {
   border: 0;
-  -webkit-box-shadow: none;
   -moz-box-shadow: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
   margin: 0;
   padding: 5px 0 2px 6px;
@@ -1033,9 +1008,9 @@ body input[type="url"], body textarea {
 .lm-dropdown {
   position: absolute;
   display: none;
-  -webkit-box-shadow: 2px 2px 5px #666666;
-  -moz-box-shadow: 2px 2px 5px #666666;
-  box-shadow: 2px 2px 5px #666666;
+  -moz-box-shadow: 2px 2px 5px #666;
+  -webkit-box-shadow: 2px 2px 5px #666;
+  box-shadow: 2px 2px 5px #666;
   border-radius: 4px;
   background: white;
   border: solid 1px #ccc;
@@ -1087,13 +1062,11 @@ body input[type="url"], body textarea {
   padding: 0;
   margin: 0;
   background-color: #fff;
-  -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
+  -webkit-border-radius: 4px;
   border-radius: 4px;
-  -webkit-box-shadow: 2px 2px 5px #666666;
   -moz-box-shadow: 2px 2px 5px #666666;
+  -webkit-box-shadow: 2px 2px 5px #666666;
   box-shadow: 2px 2px 5px #666666;
   border: solid 1px #ccc;
 }
@@ -1134,13 +1107,11 @@ body input[type="url"], body textarea {
 .lm-dialog .dialog-head .head-close {
   background: #f0f0f0;
   border: 1px solid #bbb;
-  -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
+  -webkit-border-radius: 4px;
   border-radius: 4px;
-  -webkit-box-shadow: 0 1px 1px #666666;
   -moz-box-shadow: 0 1px 1px #666666;
+  -webkit-box-shadow: 0 1px 1px #666666;
   box-shadow: 0 1px 1px #666666;
   width: 32px;
   height: 30px;
@@ -1160,14 +1131,14 @@ body input[type="url"], body textarea {
   width: 100%;
   height: 1px;
   border-top: solid 1px #ccc;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 /* line 73, ../sass/controls/_dialog.scss */
 .lm-dialog .dialog-bottom-border, .lm-dialog .bottom-border {
-  -webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3);
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3);
 }
 /* line 76, ../sass/controls/_dialog.scss */
@@ -1309,8 +1280,9 @@ body input[type="url"], body textarea {
 }
 /* line 5, ../sass/controls/_pager.scss */
 .lm-pager, .lm-pager * {
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
   -webkit-user-select: none;
-  -moz-user-select: none;
   user-select: none;
 }
 /* line 8, ../sass/controls/_pager.scss */
@@ -1396,22 +1368,20 @@ body input[type="url"], body textarea {
 .lm-criteria-table > tbody > tr.data-row > td input[type="text"] {
   background: transparent;
   border-color: transparent;
-  -webkit-box-shadow: none;
   -moz-box-shadow: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
-  -webkit-border-radius: 0;
   -moz-border-radius: 0;
-  -ms-border-radius: 0;
-  -o-border-radius: 0;
+  -webkit-border-radius: 0;
   border-radius: 0;
   border-bottom: dotted 1px #959494;
   height: 20px;
   padding-top: 0;
   padding-bottom: 0;
   padding-left: 0;
-  -webkit-transition: height 0.15s linear;
   -moz-transition: height 0.15s linear;
   -o-transition: height 0.15s linear;
+  -webkit-transition: height 0.15s linear;
   transition: height 0.15s linear;
   font-size: 12px;
 }
@@ -1419,21 +1389,19 @@ body input[type="url"], body textarea {
 .lm-criteria-table > tbody > tr.data-row > td .styled-date-range, .lm-criteria-table > tbody > tr.data-row > td .styled-lookup, .lm-criteria-table > tbody > tr.data-row > td .styled-time {
   background: transparent;
   border-color: transparent;
-  -webkit-box-shadow: none;
   -moz-box-shadow: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
-  -webkit-border-radius: 0;
   -moz-border-radius: 0;
-  -ms-border-radius: 0;
-  -o-border-radius: 0;
+  -webkit-border-radius: 0;
   border-radius: 0;
   border-bottom: dotted 1px #959494;
 }
 /* line 63, ../sass/controls/_criteria_table.scss */
 .lm-criteria-table > tbody > tr.data-row > td .styled-date-range input[type="text"], .lm-criteria-table > tbody > tr.data-row > td .styled-lookup input[type="text"], .lm-criteria-table > tbody > tr.data-row > td .styled-time input[type="text"] {
   border: 0;
-  -webkit-box-shadow: none;
   -moz-box-shadow: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
   margin: 0;
   padding: 5px 0 2px 6px;
@@ -1458,8 +1426,8 @@ body input[type="url"], body textarea {
   padding-left: 9px;
   vertical-align: middle;
   border: 1px solid #ccc;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   color: rgba(0, 0, 0, 0.75);
 }
@@ -1468,15 +1436,15 @@ body input[type="url"], body textarea {
   background: white;
   border-color: #ccc;
   border-radius: 2px;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
 }
 /* line 97, ../sass/controls/_criteria_table.scss */
 .lm-criteria-table > tbody > tr.data-row > td.editable .styled-date-range input[type="text"], .lm-criteria-table > tbody > tr.data-row > td.editable .styled-lookup input[type="text"], .lm-criteria-table > tbody > tr.data-row > td.editable .styled-time input[type="text"] {
   border: 0;
-  -webkit-box-shadow: none;
   -moz-box-shadow: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
   margin: 0;
   padding: 5px 0 2px 6px;
@@ -1552,7 +1520,7 @@ body input[type="url"], body textarea {
   display: block;
 }
 
-/* line 10, ../sass/controls/_resizable.scss */
+/* line 9, ../sass/controls/_resizable.scss */
 .ui-resizable-disabled .ui-resizable-handle,
 .ui-resizable-autohide .ui-resizable-handle {
   display: none;
@@ -1717,9 +1685,9 @@ body input[type="url"], body textarea {
 /* line 25, ../sass/controls/_tooltip.scss */
 .tooltip.fade {
   opacity: 0;
-  -webkit-transition: opacity 0.15s linear;
   -moz-transition: opacity 0.15s linear;
   -o-transition: opacity 0.15s linear;
+  -webkit-transition: opacity 0.15s linear;
   transition: opacity 0.15s linear;
 }
 /* line 28, ../sass/controls/_tooltip.scss */
@@ -1731,7 +1699,7 @@ body input[type="url"], body textarea {
 .tooltip-inner {
   max-width: 600px;
   padding: 3px 8px;
-  color: white;
+  color: #fff;
   text-decoration: none;
   background-color: #757575;
   border-radius: 4px;
@@ -1900,8 +1868,9 @@ body input[type="url"], body textarea {
   color: #757575;
   font-size: 16px;
   font-weight: 500;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
   -webkit-user-select: none;
-  -moz-user-select: none;
   user-select: none;
 }
 /* line 21, ../sass/controls/_filter-bar.scss */
