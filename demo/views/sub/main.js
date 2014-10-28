@@ -7,15 +7,16 @@ define([
 	'./BlockUIView',
 	'./CriteriaTableView',
 	'./DropDownView',
-	'./DropDownMenuView'
-], function (AutoCompleteView, ButtonsView, BlockUIView, CriteriaTableView, DropDownView, DropDownMenuView) {
-
+	'./DropDownMenuView',
+	'./DialogView'
+], function (AutoCompleteView, ButtonsView, BlockUIView, CriteriaTableView, DropDownView, DropDownMenuView, DialogView) {
     return {
         'auto-complete': AutoCompleteView,
-        'buttons': ButtonsView,
-        'block-ui': BlockUIView,
-        'criteria-table': CriteriaTableView,
+	    'buttons': ButtonsView,
+	    'block-ui': BlockUIView,
+	    'criteria-table': CriteriaTableView,
         'dropdown': DropDownView,
-        'dropdown-menu': DropDownMenuView
+        'dropdown-menu': DropDownMenuView,
+	    'dialog': DialogView
     };
 });
