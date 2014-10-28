@@ -18,9 +18,11 @@ define([
 	var localStorage = {};
 	var sessionStorage = {};
 
+
+	// Use try catch in case in some special browsers, there will be exception when we refer to window.localStorage
 	try {
-		localStorage = window.localStorage;
-		sessionStorage = window.sessionStorage;
+		localStorage = window.localStorage || {};
+		sessionStorage = window.sessionStorage || {};
 	} catch(e) {
 	}
 
@@ -36,6 +38,7 @@ define([
      };
 
 	LM.toLoginPage = function () {
+		// Use try catch in case there is cross-domain(security) problems
 		try {
 			window.top.location.href = 'login.html';
 		} catch (e) {
