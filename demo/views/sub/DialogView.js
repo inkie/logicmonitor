@@ -5,6 +5,8 @@ define([
 	'./MyDialog'
 ], function (LM, $, templates, MyDialog) {
 	return LM.View.extend({
+		className: 'page-wrapper',
+
 		events: {
 			'click #openDialog': '_openDialog'
 		},
@@ -21,7 +23,6 @@ define([
 		_openDialog: function (e) {
 			this.registerComponent('dialog', new MyDialog({
 				width: 600,
-				height: 400,
 				title: 'Dialog Demo'
 			}));
 		}

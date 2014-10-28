@@ -5,6 +5,11 @@ define([
 	'lmdialog'
 ], function (LM, $, templates, Dialog) {
 	return Dialog.extend({
-		bodyTemplate: templates['demo/MyDialog']
+		bodyTemplate: templates['demo/MyDialog'],
+		footTemplate: templates['demo/MyDialogFoot'],
+
+		events: {
+			'click .btn-close': '_onClose'
+		}
 	});
 });
