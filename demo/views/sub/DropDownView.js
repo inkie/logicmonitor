@@ -11,7 +11,7 @@ define([
 			this.$el.html(this.template());
 			this.registerComponent('dropdown', new MyDropDown({
 		        triggerEl: '#triggerDropDown',
-				position: 'middle'
+		        position: 'left'
 			}));
 		}
 	});
