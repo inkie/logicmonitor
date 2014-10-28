@@ -12,6 +12,7 @@
   font-weight: 100;
   font-style: normal;
 }
+
 /*Museo Sans 100 italic*/
 @font-face {
   font-family: 'MuseoSans';
@@ -20,6 +21,7 @@
   font-weight: 100;
   font-style: italic;
 }
+
 /*Museo Sans 300*/
 @font-face {
   font-family: 'MuseoSans';
@@ -28,6 +30,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 /*Museo Sans 300 italic*/
 @font-face {
   font-family: 'MuseoSans';
@@ -36,6 +39,7 @@
   font-weight: normal;
   font-style: italic;
 }
+
 /*Museo Sans 300*/
 @font-face {
   font-family: 'MuseoSans';
@@ -44,6 +48,7 @@
   font-weight: 300;
   font-style: normal;
 }
+
 /*Museo Sans 300 italic*/
 @font-face {
   font-family: 'MuseoSans';
@@ -52,6 +57,7 @@
   font-weight: 300;
   font-style: italic;
 }
+
 /*Museo Sans 500 */
 @font-face {
   font-family: 'MuseoSans';
@@ -60,6 +66,7 @@
   font-weight: 500;
   font-style: normal;
 }
+
 /*Museo Sans 700 */
 @font-face {
   font-family: 'MuseoSans';
@@ -68,6 +75,7 @@
   font-weight: 700;
   font-style: normal;
 }
+
 /*Museo Sans 700 italic*/
 @font-face {
   font-family: 'MuseoSans';
@@ -76,6 +84,7 @@
   font-weight: 700;
   font-style: italic;
 }
+
 /*Museo Sans 900*/
 @font-face {
   font-family: 'MuseoSans';
@@ -84,6 +93,7 @@
   font-weight: 900;
   font-style: normal;
 }
+
 /*Museo Sans 900 italic*/
 @font-face {
   font-family: 'MuseoSans';
@@ -92,6 +102,7 @@
   font-weight: 900;
   font-style: italic;
 }
+
 /* override browser's default scrollbar style*/
 /* line 150, ../sass/common.scss */
 ::-webkit-scrollbar-track-piece {
@@ -126,15 +137,15 @@
 ----------------------------------------- */
 /* line 174, ../sass/common.scss */
 *, *:before, *:after {
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 /* line 178, ../sass/common.scss */
 body, body * {
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-family: 'MuseoSans';
   font-size: 14px;
@@ -245,7 +256,7 @@ h6 {
 }
 /* line 267, ../sass/common.scss */
 .top-nav .logo {
-  background: url('../images/logo.png?1414136064');
+  background: url('../images/logo.png?1414502582');
   float: left;
   display: inline-block;
   width: 64px;
@@ -255,7 +266,7 @@ h6 {
 }
 /* line 278, ../sass/common.scss */
 .top-nav .powered-by {
-  background: url('../images/powered_by.png?1414136064');
+  background: url('../images/powered_by.png?1414502750');
   float: left;
   display: inline-block;
   width: 188px;
@@ -310,7 +321,7 @@ h6 {
   padding-left: 25px;
   z-index: 2;
   position: relative;
-  background: #f5f5f5;
+  background: whitesmoke;
 }
 /* line 331, ../sass/common.scss */
 .workspace-con .workspace .main-con .page-wrapper .page-header h1 {
@@ -343,13 +354,15 @@ h6 {
 
 /* line 365, ../sass/common.scss */
 .formError .formErrorContent {
-  -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
   border-radius: 4px;
   border: none;
-  -moz-box-shadow: 2px 2px 3px #999;
-  -webkit-box-shadow: 2px 2px 3px #999;
-  box-shadow: 2px 2px 3px #999;
+  -webkit-box-shadow: 2px 2px 3px #999999;
+  -moz-box-shadow: 2px 2px 3px #999999;
+  box-shadow: 2px 2px 3px #999999;
   font-size: 12px;
   line-height: 14px;
   font-weight: bold;
@@ -461,7 +474,7 @@ button[disabled], input[disabled] {
   width: 288px;
   height: 56px;
   margin: 0 auto 25px auto;
-  background: url('../images/signin_logo.png?1414136064');
+  background: url('../images/signin_logo.png?1414502582');
 }
 /* line 440, ../sass/common.scss */
 .signin-content .section-box {

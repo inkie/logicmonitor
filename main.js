@@ -8,6 +8,7 @@ define([
 
 	'commons/logicmonitor/views/TopNavBarView',
 	'lmblockui',
+	'commons/logicmonitor/models/UserModel',
 
 	'lmsidebar',
 	'lmexpandtable',
@@ -26,7 +27,8 @@ define([
 	'lmfilterbar',
 	'lmcheckboxdropdown',
 	'lmradiodropdown',
-	'lmautocompletedropdown'
+	'lmautocompletedropdown',
+	'jq-validationEngine-en'
 ], function (_, B2, $, Handlebars, LM, utils, TopNavBarView, BlockUI) {
 	//require business js code begin
 	var page = /\/([^\/]*?)\.html/.exec(window.location.pathname);
