@@ -12,10 +12,10 @@ define([
 
     return {
         'auto-complete': AutoCompleteView,
-	    'buttons': ButtonsView,
-	    'block-ui': BlockUIView,
-	    'criteria-table': CriteriaTableView,
-	    'dropdown': DropDownView,
-	    'dropdown-menu': DropDownMenuView
+        'buttons': ButtonsView,
+        'block-ui': BlockUIView,
+        'criteria-table': CriteriaTableView,
+        'dropdown': DropDownView,
+        'dropdown-menu': DropDownMenuView
     };
 });
