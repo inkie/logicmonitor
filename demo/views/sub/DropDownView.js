@@ -1,7 +1,7 @@
 define([
-	'core',
-	'demo/templates',
-	'./MyDropDown'
+    'core',
+    'demo/templates',
+    './MyDropDown'
 ], function (LM, templates,  MyDropDown) {
     return LM.View.extend({
         className: 'page-wrapper',
