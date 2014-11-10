@@ -35,7 +35,7 @@ require.config({
 		'modelurls': 'commons/logicmonitor/models/ModelUrls',
 
         /* 3rd party libs*/
-		'handlebars': 'commons/3rdparty/handlebars/handlebars',
+		'handlebars': 'commons/3rdparty/handlebars/handlebars-v2.0.0',
         'lodash': 'commons/3rdparty/lodash',
         'backbone': 'commons/3rdparty/backbone',
         'jquery': 'commons/3rdparty/jquery-2.1.1',

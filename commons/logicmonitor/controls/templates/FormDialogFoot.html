@@ -2,6 +2,10 @@
 <button class="lm-button animate purple btn-save">save</button>
 {{/if}}
 
+{{#if showFootClose}}
+<button class="lm-button animate purple btn-close">close</button>
+{{/if}}
+
 {{#if showFootSaveClose}}
 <button class="lm-button animate gray btn-save-close" >save &amp; close</button>
 {{/if}}
@@ -11,6 +15,10 @@
     <span class="icons16 clone-gray"></span>
     <span>clone</span>
 </button>
+{{/if}}
+
+{{#if showFootCancel}}
+<a class="btn-cancel link-btn">cancel</a>
 {{/if}}
 
 {{#if showFootDelete}}

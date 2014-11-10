@@ -12,16 +12,25 @@ define([
 		tagName: 'table',
 		initialize: function (options) {
 			options = options || {};
+            _.defaults(options, {
+                showEmptyMessage: true
+            });
 			this.coupleRows = options.coupleRows || false;
+            this.showEmptyMessage = options.showEmptyMessage;
+            this.emptyTableTemplate = options.emptyTableTemplate || templates['commons/logicmonitor/controls/EmptyTable'];
+            this.emptyMessage = options.emptyMessage || 'There is no data for this table';
 			this.data = options.data || {};
 			this.template = options.template || this.template;
 		},
 
 		render: function () {
-			this.$el.html(this.template(this.data));
-			if (this.coupleRows) {
-				this._buildDoubleColumns();
-			}
+            this.$el.html(this.template(this.data));
+            if (this.coupleRows) {
+                this._buildDoubleColumns();
+            }
+            if(this.showEmptyMessage && !this.$('tbody').html().trim()) {
+                this.$el.html(this.emptyTableTemplate(this.emptyMessage));
+            }
 		},
 
 		/**

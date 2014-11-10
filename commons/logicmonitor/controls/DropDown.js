@@ -10,7 +10,10 @@ define([
         },
 
         initialize: function (options) {
-	        this.options = options;
+	        if (!this.options) {
+		        this.options = options;
+	        }
+
             if (!this.options.triggerEl) {
                 throw new Error('You must specify a trigger for dropdown.');
             }
@@ -18,6 +21,10 @@ define([
             this.ifHideOnScroll = options.ifHideOnScroll;
             this.triggerEl = this.options.triggerEl;
             this._dropDownHandler = _.bind(this._dropDown, this);
+            this.offset = options.offset || {
+                top: 0,
+                left: 0
+            };
             this._clickOutsideHandler = _.bind(this._onClickOutside, this);
             $(this.triggerEl).off('click.dropdown').on('click.dropdown', this._dropDownHandler);
         },
@@ -45,8 +52,8 @@ define([
             }
 
             this.$el.offset({
-                top: triggerOffset.top + triggerHeight,
-                left: left
+                top: triggerOffset.top + triggerHeight + this.offset.top,
+                left: left + this.offset.left
             });
             this.$el.hide();
             this.$el.slideDown(150, function () {
@@ -69,7 +76,7 @@ define([
                 return;
             }
 
-            if ($(e.target).closest('.ui-datepicker-div').length > 0) {
+            if ($(e.target).closest('.ui-datepicker').length > 0) {
                 return;
             }
             if ($(e.target).closest('.ui-timepickr').length > 0) {

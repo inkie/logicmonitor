@@ -28,7 +28,13 @@ define([
         },
 
         _onClickMenuItem: function (e) {
-            this.trigger('select', $(e.currentTarget).data('menuOption'));
+	        var $curTarget = $(e.currentTarget);
+	        if ($curTarget.find('.check-gray').length > 0) {
+		        this.$('li').removeClass('selected');
+		        $curTarget.addClass('selected');
+	        }
+
+            this.trigger('select', $curTarget.data('menuOption'));
 	        this.$el.hide();
         }
     });

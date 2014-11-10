@@ -8,7 +8,6 @@ define([
 	'commons/3rdparty/jquery-ui/resizable',
 	'commons/3rdparty/jquery-ui/effect-slide'
 ], function (LM, _, templates) {
-
     return LM.View.extend({
         className: 'lm-sidebar',
 
@@ -38,13 +37,18 @@ define([
 			    start: function(){
 				    that._onResizing = true;
 			    },
+			    resize: function () {
+				    that.trigger('resizing');
+			    },
 			    stop: function(){
 				    LM.localStorage[that.storagePrefix + '.sidebarWidth'] = that.$el.prop('offsetWidth');
 				    that._onResizing = false;
 			    }
 		    });
 
-		    this.trigger('resize');
+		    setTimeout(function () {
+			    that.trigger('resize');
+		    });
 	    },
 
 	    _onExpandSidebar: function () {
@@ -65,7 +69,7 @@ define([
 
 	    _onCollapseSidebar: function () {
 		    var that = this,
-			    $expandBtn = $('.sidebar-expand');
+			    $expandBtn = this.$expandBtn;
 
 		    this.$el.hide('slide',{
 			    direction:'left',

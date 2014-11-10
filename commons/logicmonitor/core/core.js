@@ -49,6 +49,7 @@ define([
 	LM.logoffUser = function (goToLogin) {
 		localStorage.securityUser = '';
 		sessionStorage.securityUser = '';
+		sessionStorage.__debug__ = 0;
 		if (goToLogin) {
 			LM.toLoginPage();
 		}
@@ -84,7 +85,8 @@ define([
 		}
 
 		if (user == null) {
-			if (sessionStorage.__debug__ == '1') { // the debug flag
+			if (sessionStorage.__debug__ == '1' || /debug=1/.test(location.search)) { // the debug flag
+				sessionStorage.__debug__ = 1;
 				user = sessionStorage.securityUser = JSON.stringify({
 					id: '__debug__',
 					username: 'test-user',
@@ -97,7 +99,7 @@ define([
 				sessionStorage.securityUser = '';
 			}
 		} else {
-			if (sessionStorage.__debug__ != '1' && user.id == '__debug__') {
+			if (sessionStorage.__debug__ != '1' && !/debug=1/.test(location.search) && user.id == '__debug__') {
 				sessionStorage.securityUser = '';
 				localStorage.securityUser = '';
 				user = null;

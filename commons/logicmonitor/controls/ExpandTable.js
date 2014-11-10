@@ -17,6 +17,10 @@ define([
 		},
 
 		_onToggleExpandedView: function (e) {
+			if ($(e.currentTarget).find('.col-expand-btn').length <= 0) {
+				return;
+			}
+
 			var $curTarget = $(e.target);
 			var $row = $curTarget.closest('tr');
 			var $arrowIcon = $row.find('.gray-arrow');
@@ -65,7 +69,7 @@ define([
 				});
 
 				// change the white icon to the gray icon
-				$icon.prop('className', $icon.prop('className').replace('white', 'gray'));
+				$icon.prop('className', $icon.prop('className').replace('white', 'gray').replace('White', 'Gray'));
 			} else {
 				this.freeChildren('embeddedView' + id);
 
@@ -73,7 +77,7 @@ define([
 				$row.find('.embed-handle').removeClass('active')
 					.find('.lm-button span').each(function () {
 						var $icon = $(this);
-						$icon.prop('className', $icon.prop('className').replace('white', 'gray'));
+						$icon.prop('className', $icon.prop('className').replace('white', 'gray').replace('White', 'Gray'));
 					});
 
 				$embeddedPanel.addClass('active');
@@ -82,7 +86,7 @@ define([
 
 				// change the gray icon to the white icon
 				$handle.addClass('active');
-				$icon.prop('className', $icon.prop('className').replace('gray', 'white'));
+				$icon.prop('className', $icon.prop('className').replace('gray', 'white').replace('Gray', 'White'));
 
 				$embeddedCon.show().css('height', 0);
 
