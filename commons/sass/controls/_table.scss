@@ -64,19 +64,17 @@
         border-bottom: 1px solid #ccc;
 
         &, * {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             color: $color-dark-gray;
         }
 
         &.col-chkbox {
-            min-width: 39px;
-            max-width: 39px;
+            width: 39px;
         }
 
         &.col-alert-status {
-            min-width: 40px;
-            max-width: 40px;
+            width: 40px;
 
             span {
                 vertical-align: middle;
@@ -110,9 +108,12 @@
 
     td {
         &, * {
-            font-size: 12px;
+            font-size: 14px;
             font-weight: normal;
             color: $color-dark-gray;
+        }
+        span.icons24 {
+            margin-top: -2px;
         }
 
     }
@@ -183,6 +184,49 @@
     .lm-table {
         th {
             border-bottom-width: 3px;
+        }
+    }
+
+    &.large-font {
+        th {
+            &, * {
+                font-size: 14px;
+                font-weight: 500;
+            }
+        }
+
+        td {
+            &, * {
+                font-size: 16px;
+            }
+        }
+    }
+
+    &.small-font {
+        th {
+            &, * {
+                font-size: 12px;
+            }
+        }
+
+        td {
+            &, * {
+                font-size: 13px;
+            }
+        }
+    }
+
+    &.smaller-font {
+        th {
+            &, * {
+                font-size: 12px;
+            }
+        }
+
+        td {
+            &, * {
+                font-size: 12px;
+            }
         }
     }
 }

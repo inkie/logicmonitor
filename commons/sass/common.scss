@@ -1,4 +1,3 @@
-
 @import "compass/css3";
 @import "compass/utilities/general/clearfix";
 @import "./controls/_variable";
@@ -19,6 +18,7 @@
     font-weight: 100;
     font-style: normal;
 }
+
 /*Museo Sans 100 italic*/
 @font-face {
     font-family: 'MuseoSans';
@@ -31,6 +31,7 @@
     font-weight: 100;
     font-style: italic;
 }
+
 /*Museo Sans 300*/
 @font-face {
     font-family: 'MuseoSans';
@@ -43,6 +44,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 /*Museo Sans 300 italic*/
 @font-face {
     font-family: 'MuseoSans';
@@ -55,6 +57,7 @@
     font-weight: normal;
     font-style: italic;
 }
+
 /*Museo Sans 300*/
 @font-face {
     font-family: 'MuseoSans';
@@ -67,6 +70,7 @@
     font-weight: 300;
     font-style: normal;
 }
+
 /*Museo Sans 300 italic*/
 @font-face {
     font-family: 'MuseoSans';
@@ -79,6 +83,7 @@
     font-weight: 300;
     font-style: italic;
 }
+
 /*Museo Sans 500 */
 @font-face {
     font-family: 'MuseoSans';
@@ -91,6 +96,7 @@
     font-weight: 500;
     font-style: normal;
 }
+
 /*Museo Sans 700 */
 @font-face {
     font-family: 'MuseoSans';
@@ -103,6 +109,7 @@
     font-weight: 700;
     font-style: normal;
 }
+
 /*Museo Sans 700 italic*/
 @font-face {
     font-family: 'MuseoSans';
@@ -115,6 +122,7 @@
     font-weight: 700;
     font-style: italic;
 }
+
 /*Museo Sans 900*/
 @font-face {
     font-family: 'MuseoSans';
@@ -127,6 +135,7 @@
     font-weight: 900;
     font-style: normal;
 }
+
 /*Museo Sans 900 italic*/
 @font-face {
     font-family: 'MuseoSans';
@@ -148,24 +157,27 @@
 
 /* override browser's default scrollbar style*/
 ::-webkit-scrollbar-track-piece {
-    background-color:#fff;
-    border-left:1px solid #ddd;
+    background-color: #fff;
+    border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
 }
+
 ::-webkit-scrollbar {
-    width:13px;
-    height:10px;
+    width: 13px;
+    height: 10px;
     border: solid 1px #ddd;
 }
+
 ::-webkit-scrollbar-thumb {
-    background-color:#cbcbcb;
-    background-clip:padding-box;
-    border:1px solid #bbb;
-    min-height:28px;
+    background-color: #cbcbcb;
+    background-clip: padding-box;
+    border: 1px solid #bbb;
+    min-height: 28px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-    border:1px solid #636363;
-    background-color:#929292;
+    border: 1px solid #636363;
+    background-color: #929292;
 }
 
 /* -----------------------------------------
@@ -187,15 +199,20 @@ body.app {
 }
 
 a {
-    border-bottom:  1px solid $color-purple2;
+    border-bottom: 1px solid $color-purple2;
     color: $color-purple2;
 
-    &:link {color: $color-purple2; text-decoration: none;}
-    &:hover, &:active, &:focus { color: #0d8dcc; }
+    &:link {
+        color: $color-purple2;
+        text-decoration: none;
+    }
+    &:hover, &:active, &:focus {
+        color: #0d8dcc;
+    }
 }
 
 .clearfix, .add-clearfix {
-    @include clearfix;
+    @include pie-clearfix;
 }
 
 ul, ol, dl {
@@ -274,7 +291,6 @@ h6 {
         border-bottom: none;
     }
 
-
     .powered-by {
         @include background(image-url('powered_by.png', false, true));
         float: left;
@@ -285,11 +301,12 @@ h6 {
         border-bottom: none;
     }
 }
+
 /* -----------------------------------------
     workspace global style, make the sub contents
     in a predefined container
 ----------------------------------------- */
-.workspace-con{
+.workspace-con {
     position: fixed;
     left: 0;
     width: 100%;
@@ -304,10 +321,10 @@ h6 {
 
         .sidebar-con {
             position: absolute;
-            left:0;
-            top:0;
+            left: 0;
+            top: 0;
             height: 100%;
-            z-index: 3;
+            z-index: 4;
         }
 
         .main-con {
@@ -324,7 +341,7 @@ h6 {
                     height: 61px;
                     line-height: 61px;
                     padding-left: 25px;
-                    z-index: 2;
+                    z-index: 1;
                     position: relative;
                     background: $color-gray8;
 
@@ -388,26 +405,88 @@ h6 {
     }
 }
 
-.bottom-action-area{
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 10px 20px;
-  border-top: 1px solid gray;
-  background: white;
+.bottom-action-area {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 20px;
+    border-top: 1px solid gray;
+    background: white;
+
+    .lm-button {
+        margin: 0 5px;
+    }
+
+    .link-btn {
+        margin-top: 10px;
+    }
+}
+
+.lm-sidebar {
+    .name-search {
+        padding: 14px 10px 3px 10px;
+        background: #dfdfdf;
+        border-bottom: 1px solid #ccc;
+        position: relative;
+        @include background-image(linear-gradient(white, rgba(240, 240, 240, 1) 0%, rgba(223, 223, 223, 1) 100%));
+        padding-bottom: 15px;
+
+        h4.page-title {
+            margin-bottom: 5px;
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+        }
+    }
+
+    .tree-wrapper {
+        overflow-y: auto;
+        position: relative;
+        background: $color-gray8;
+    }
+
 }
 
 /* datetime picker */
-.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
-.ui-timepicker-div dl { text-align: left; }
-.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
-.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
-.ui-timepicker-div td { font-size: 90%; }
-.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+.ui-timepicker-div .ui-widget-header {
+    margin-bottom: 8px;
+}
 
-.ui-timepicker-rtl{ direction: rtl; }
-.ui-timepicker-rtl dl { text-align: right; }
-.ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+.ui-timepicker-div dl {
+    text-align: left;
+}
+
+.ui-timepicker-div dl dt {
+    height: 25px;
+    margin-bottom: -25px;
+}
+
+.ui-timepicker-div dl dd {
+    margin: 0 10px 10px 65px;
+}
+
+.ui-timepicker-div td {
+    font-size: 90%;
+}
+
+.ui-tpicker-grid-label {
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ui-timepicker-rtl {
+    direction: rtl;
+}
+
+.ui-timepicker-rtl dl {
+    text-align: right;
+}
+
+.ui-timepicker-rtl dl dd {
+    margin: 0 65px 10px 10px;
+}
 
 .ellips {
     text-overflow: ellipsis;
@@ -422,7 +501,7 @@ span {
     }
 }
 
-button[disabled], input[disabled]{
+button[disabled], input[disabled] {
     opacity: 0.4;
 }
 
@@ -438,13 +517,14 @@ button[disabled], input[disabled]{
     }
 
     .section-box {
-        padding:55px 100px;
+        padding: 55px 100px;
 
         .section-content {
             padding: 0;
         }
     }
 }
+
 .page-foot {
     margin-top: 20px;
     text-align: center;

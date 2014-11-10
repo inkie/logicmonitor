@@ -62,6 +62,8 @@ module.exports = function(grunt) {  // jshint ignore:line
 			partials: {
 				options: {
 					amd: true,
+					partialsUseNamespace: true,
+					namespace: 'LMPAR',
 					partialRegex: /.*/,
 					partialsPathRegex: /\/partials\//,
 					processPartialName: processHandlebarsTemplateName(true)
@@ -71,6 +73,7 @@ module.exports = function(grunt) {  // jshint ignore:line
 			templates: {
 				options: {
 					amd: true,
+					namespace: 'LMTPL',
 					processName: processHandlebarsTemplateName()
 				},
 				files: getTemplatePathsConfig('templates')
@@ -266,7 +269,7 @@ function getRequirejsConfigHelper(type, inPath, outPath, isStartup) {
 				preserveLicenseComments: false,
 				generateSourceMaps: true,
 				paths: _.extend({
-					'handlebars': 'commons/3rdparty/handlebars/handlebars.runtime',
+					'handlebars': 'commons/3rdparty/handlebars/handlebars.runtime-v2.0.0',
 					'commons/logicmonitor/partials_compiled': 'commons/logicmonitor/templates/.partials_compiled',
 					'commons/logicmonitor/templates_compiled': 'commons/logicmonitor/templates/.templates_compiled',
 					'commons/logicmonitor/controls/partials_compiled': 'commons/logicmonitor/controls/templates/.partials_compiled',

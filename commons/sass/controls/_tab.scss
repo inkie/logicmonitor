@@ -15,7 +15,7 @@
         background: $color-gray8;
         border: none;
         padding: 5px 0 0 15px;
-        @include clearfix;
+        @include pie-clearfix;
 
         li {
             border: solid 1px $color-gray8;
@@ -91,4 +91,48 @@
         padding: 10px 15px;
     }
 
+    &.transparent {
+        background: transparent;
+
+        .ui-tabs-nav {
+            background: transparent;
+        }
+    }
+
+    &.blue {
+        border-radius: 0;
+        background: $color-light-blue;
+        .ui-tabs-nav {
+            background: $color-dark-blue;
+            border-radius: 0;
+
+            li {
+                border-color: $color-dark-blue;
+
+                a {
+                    color: white;
+
+                    &:hover {
+                        color: #333;
+                    }
+                }
+
+                &.ui-tabs-active, &.ui-tabs-active:hover {
+                    background: $color-light-blue;
+                    border-color: $color-light-blue;
+                    a {
+                        color: #333;
+                    }
+                }
+
+                &:hover {
+                    background: $color-light-blue;
+                }
+            }
+        }
+
+        .ui-tabs-panel {
+            border-top: solid 1px $color-dark-blue;
+        }
+    }
 }

@@ -1,6 +1,133 @@
 @import "compass/css3";
 @import "compass/css3/user-interface";
 
+@mixin action-rows() {
+    ul.expanded-con {
+        li {
+            @include pie-clearfix;
+            line-height: 36px;
+            padding-left: 10px;
+            border-bottom: 1px solid $color-dark-gray;
+
+            &.action-row {
+                border-top: 1px dashed #333;
+                border-bottom: none;
+
+                .action-item {
+                    padding-right: 30px;
+
+                    * {
+                        vertical-align: middle;
+                    }
+
+                    a {
+                        color: black;
+                        border:none;
+
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+
+            &:nth-last-of-type(2) {
+                border-bottom: none;
+            }
+        }
+
+        &.vertical {
+            li {
+                .item-label, .item-value {
+                    float: left;
+                }
+
+                .item-label {
+                    width: 150px;
+                }
+
+                .item-label, .item-value {
+                    padding: 10px 0px;
+                    line-height: 24px;
+                }
+            }
+        }
+
+        &.horizon {
+            li {
+                .item {
+                    label {
+                        font-weight: 500;
+                        margin-right: 5px;
+                    }
+
+                    display: inline-block;
+                    padding-right: 50px;
+                }
+            }
+        }
+    }
+
+    .expanded-con {
+        table {
+            width: 100%;
+            margin-bottom: 0;
+
+            tbody {
+                border-bottom: none;
+            }
+            tr {
+                border-bottom: 1px solid $color-dark-gray;
+
+                &.action-row {
+                    border-top: 1px dashed #333;
+                    border-bottom: none;
+                    line-height: 36px;
+
+                    .action-item {
+                        padding-right: 30px;
+
+                        * {
+                            vertical-align: middle;
+                        }
+
+                        a {
+                            color: black;
+                            border:none;
+
+                            &:hover{
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+
+                    td {
+                        line-height: 36px;
+                    }
+                }
+
+                &:nth-last-of-type(2) {
+                    border-bottom: none;
+                }
+
+                th {
+                    line-height: 36px;
+                    font-weight: 500;
+                }
+                th,td {
+                    border: none;
+                }
+
+                td {
+                    line-height: 24px;
+                }
+            }
+
+        }
+    }
+
+}
+
 .lm-expand-table {
     .lm-button.small-small.gray {
         background: #ccc;
@@ -46,6 +173,11 @@
         > tr {
             &.data-row {
                 cursor: pointer;
+
+                &.disable-expand {
+                    cursor: default;
+                }
+
                 &.expand {
                     border-top: 1px solid white;
 
@@ -68,6 +200,7 @@
                     border-top-right-radius: 8px;
                     height: 36px;
                     position: relative;
+                    text-align: center;
 
                     &.active {
                         top: 3px;
@@ -120,66 +253,7 @@
                     display: table-row;
                 }
 
-                ul.expanded-con {
-                    li {
-                        @include clearfix;
-                        line-height: 36px;
-                        padding-left: 10px;
-                        border-bottom: 1px solid $color-dark-gray;
-
-                        &.action-row {
-                            border-top: 1px dashed #333;
-                            border-bottom: none;
-
-                            .action-item {
-                                padding-right: 30px;
-
-                                * {
-                                    vertical-align: middle;
-                                }
-
-                                a {
-                                    color: black;
-                                    border:none;
-
-                                    &:hover{
-                                        text-decoration: underline;
-                                    }
-                                }
-                            }
-                        }
-
-                        &:nth-last-of-type(2) {
-                            border-bottom: none;
-                        }
-                    }
-
-                    &.vertical {
-                        li {
-                            .item-label, .item-value {
-                                float: left;
-                            }
-
-                            .item-label {
-                                width: 150px;
-                            }
-                        }
-                    }
-
-                    &.horizon {
-                        li {
-                            .item {
-                                label {
-                                    font-weight: 500;
-                                    margin-right: 5px;
-                                }
-
-                                display: inline-block;
-                                padding-right: 50px;
-                            }
-                        }
-                    }
-                }
+                @include action-rows();
 
             }
 
@@ -204,6 +278,8 @@
                     overflow: hidden;
                     position: relative;
                 }
+
+                @include action-rows();
             }
         }
     }

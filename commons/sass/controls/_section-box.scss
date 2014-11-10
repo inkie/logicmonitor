@@ -39,6 +39,15 @@
         margin-bottom: 5px;
     }
 
+    .label-tip {
+        font-size: 14px;
+        color: #757575;
+
+        &.chk {
+            padding-left: 27px;
+        }
+    }
+
     .radio-des-left {
         margin-right: 10px;
         display: inline-block;

@@ -46,7 +46,7 @@
                 }
             }
 
-            &.heading.with-menu, &.menu {
+            &.heading.with-menu:not(.selectable), &.menu {
                 cursor: default;
                 &:hover {
                     background: none;
