@@ -17,7 +17,7 @@ define([
             });
 			this.coupleRows = options.coupleRows || false;
             this.showEmptyMessage = options.showEmptyMessage;
-            this.emptyTableTemplate = options.emptyTableTemplate || templates['commons/logicmonitor2/controls/EmptyTable'];
+            this.emptyTableTemplate = options.emptyTableTemplate || templates['commons/logicmonitor/controls/EmptyTable'];
             this.emptyMessage = options.emptyMessage || 'There is no data for this table';
 			this.data = options.data || {};
 			this.template = options.template || this.template;
