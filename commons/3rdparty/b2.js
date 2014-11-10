@@ -1,5 +1,4 @@
-//     B2.js 0.1.3
-
+//     B2.js 0.1.6
 //     (c) 2014-2014 Percy Zhang
 //     B2 may be freely distributed under the MIT license.
 //     For all details and documentation:
@@ -36,7 +35,8 @@
   var previousB2 = root.B2;
 
   // Current version of the library. Keep in sync with `package.json`.
-  B2.VERSION = '0.1.3';
+
+  B2.VERSION = '0.1.6';
 
   // Runs B2.js in *noConflict* mode, returning the `B2` variable
   // to its previous owner. Returns a reference to this B2 object.
@@ -170,11 +170,11 @@
      * @returns {LM.View}
      */
     getComponent: function (name) {
-      return this._components[name];
+      return this._components ? this._components[name] : null;
     },
 
     getComponents: function () {
-      return this._components;
+      return this._components || {};
     },
 
     // Remove some subviews or all subviews from current view
@@ -207,7 +207,7 @@
     },
 
     _addFieldToFormParams: function (fieldName, fieldValue, params) {
-      if (_.isObject(params)) {
+      if (_.isObject(params) && !_.isArray(params)) {
         var paramObj = params[fieldName];
 
         if (typeof paramObj == 'undefined')  {
@@ -228,6 +228,11 @@
     },
 
     // Encode a set of form elements as an array of names and values or as an params object
+	// There are two points need to note:
+	//	 1. if the name of the form controls is prefixed to a 'ignore',  then the controls will not be serialized to
+	//    the result
+	//
+	// 2. we support to define a value2 to specify the value when the checkbox is not checked, default is false
     serializeForm: function (formEl, ignorePrefix, needArray) {
 	  var that = this;
       var $paramEls = $(formEl || this.el).find('input, select, textarea')
@@ -267,6 +272,8 @@
               // we support to define a value2 to specify the value when the checkbox is not checked, default is false
               if (fieldValue2 == null) {
                 fieldValue = false;
+              } else {
+                fieldValue = fieldValue2;
               }
             }
             break;
@@ -274,7 +281,9 @@
             break;
         }
 
-        that._addFieldToFormParams(fieldName, fieldValue, params);
+	    if (isValidParam) {
+		  that._addFieldToFormParams(fieldName, fieldValue, params);
+	    }
       });
 
       return params;
