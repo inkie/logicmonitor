@@ -1,6 +1,9 @@
 /**
  * @name AutoComplete
  * @description a comboBox that you can filter the select by your input and read the data from remote
+ * @usage
+ * - options.fieldName: you can fetch one field if return is a object list by set the fiedlName option
+ * - resultsLimit: auto append the results=xxx in the query path.
  */
 define([
 	'lodash',
@@ -48,7 +51,6 @@ define([
 						url = that.options.url();
 					}
 
-
 					var filterStr;
 					var paramsData = {size: options.resultsLimit};
 
@@ -59,7 +61,12 @@ define([
 						// because $.ajax will auto encode the url params, so here, we decode it first
 						filterStr = decodeURIComponent(utils.getFilterStr(filterObject));
 
-						paramsData.filter = filterStr;
+                        var filterInUrl = '';
+                        url = url.replace(/[\?|\&]filter=([^\&]*)/, function(match, group1) {
+                            filterInUrl = group1;
+                            return '';
+                        });
+						paramsData.filter = filterStr + (filterInUrl ? (',' + filterInUrl) : '');
 					} else {
 						paramsData[options.queryParam] = term;
 					}

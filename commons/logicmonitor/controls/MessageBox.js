@@ -52,7 +52,12 @@ define([
 		    }
 
 		    this.remove();
-	    }
+	    },
+
+        _onClose: function (e) {
+            this.trigger('messageBox:close');
+            this._super(e);
+        }
     }, {
 	    alert: function (msg, title) {
 		    return new MessageBox({

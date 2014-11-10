@@ -14,12 +14,18 @@ define([
 
 		dialogTemplate: templates['commons/logicmonitor/controls/Dialog'],
 
-		// Here, we support use bodyTemplate to render static dialog contents
+		// @Deprecated, please use template instead.
 		bodyTemplate: function () {
 			return '';
 		},
 
+		// @Deprecated, please use data instead.
 		bodyData: {},
+
+		// Here, for compatiple with bodyTemplate
+		template: null,
+
+		footParams: {},
 
 		footTemplate: function () {
 			return '';
@@ -39,7 +45,15 @@ define([
 			this.isModal = options.isModal === false ? options.isModal : true;
 			this._uniqueNameSpace = _.uniqueId('dialog');
 			this._overlayId = this._uniqueNameSpace + '-overlay';
+
+			if (this.data || options.data) {
+				this.data = _.defaults(options.data || {}, this.data || {});
+			}
+
 			this.bodyData = _.defaults(options.bodyData || {},  this.bodyData);
+			this.bodyTemplate = options.bodyTemplate || this.bodyTemplate;
+			this.footTemplate = options.footTemplate || this.footTemplate;
+			this.footParams =  _.defaults(options.footParams || {}, this.footParams);
 
 			// set proper z-index for the dialog and overlay
 			var $dialogs = $('.lm-dialog'),
@@ -51,7 +65,8 @@ define([
 
 			var diaOptions = {
 				title: options.title || this.title,
-				titleIcon: options.titleIcon || this.titleIcon
+				titleIcon: options.titleIcon || this.titleIcon,
+				subTitle: options.subTitle || this.subTitle
 			};
 
 			var cssParams = {
@@ -93,18 +108,38 @@ define([
 				handle: '.dialog-head'
 			});
 
-			me.render();
+			me.renderDialog();
+		},
+
+		renderDialog: function () {
+			this.render();
+			this.renderFoot();
+			this.resetPosition();
 		},
 
 		//need overwrite in child class
 		render: function () {
+			var template = this.template || this.bodyTemplate;
+			var data = this._prepareData();
 
-			// Here, we support use bodyTemplate to render static dialog contents
-			this.$('.dialog-body').html(this.bodyTemplate(this.bodyData || {}));
-			this.$('.dialog-foot').html(this.footTemplate(this.footParams || {}));
-			this.resetPosition();
+			this.$('.dialog-body').html(template(data));
 
 			return this;
+		},
+
+		_prepareData: function () {
+			// Keep compatiple with bodyData
+			if (!_.isEmpty(this.bodyData)) {
+				return this.bodyData;
+			} else if (this.model) {
+				return this.model.toJSON();
+			} else {
+				return this.data || {};
+			}
+        },
+
+		renderFoot: function () {
+		       this.$('.dialog-foot').html(this.footTemplate(this.footParams));
 		},
 
 		_addPX: function (value) {
@@ -146,7 +181,10 @@ define([
 			// compute auto box
 			var $dialogBody = this.$('.dialog-body');
 			var $autoBox = this.$('.dlg-auto-box');
-			$autoBox.css('height', 'auto');
+			if (!$dialogBody.hasScrollBar()) {
+				$autoBox.css('height', 'auto');
+			}
+
 			var autoBoxHeight = $autoBox.height();
 
 			if ($dialogBody.hasScrollBar()) {

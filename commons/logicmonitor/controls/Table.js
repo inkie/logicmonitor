@@ -6,7 +6,7 @@ define([
 	'core',
 	'commons/logicmonitor/controls/templates',
 	'lmpager',
-	'lmblockui'
+    'lmblockui'
 ], function (_, LM, templates, Pager, BlockUI) {
 	return LM.View.extend({
 		className: 'lm-table',
@@ -19,6 +19,8 @@ define([
 		},
 
 		pagerPosition: 'both',
+
+		fixedColumns: [],
 
 		appEvents: {
 			'select topPager': '_onSelectPage',
@@ -37,6 +39,8 @@ define([
 			this.fullData = this.pageData = options.data;
 			this.topPagerCon = options.topPagerCon;
 			this.bottomPagerCon = options.bottomPagerCon;
+			this.fontSizeSetting = options.fontSizeSetting || 'normal-font';
+			this.columnSetting = options.columnSetting || [];
 
 			this.blockUI = new BlockUI({
 				$blockEl: $(options.blockEl || this.el)
@@ -68,9 +72,9 @@ define([
 			}
 
 			data = data || [];
-
 			this.trigger('before:render');
 			this.$el.html(this.template(data));
+			this.setColumns(this.columnSetting);
 			this.trigger('after:render');
 
 			this._postRender(data);
@@ -81,6 +85,8 @@ define([
 				this.$el.addClass('empty');
 			}
 
+			this.$el.addClass(this.fontSizeSetting);
+
 			// init sort status
 			var $sortByHeader = this.$('th[data-sort-by=' + this.sortBy + ']');
 
@@ -88,6 +94,13 @@ define([
 			this.$('.data-row:last').addClass('last');
 
 			this._renderPager();
+            this._toggleSelectAllByEachRow();
+		},
+
+		setFontSize: function (fontSizeSetting) {
+			this.$el.removeClass(this.fontSizeSetting).addClass(fontSizeSetting);
+
+			this.fontSizeSetting = fontSizeSetting;
 		},
 
 		/**
@@ -270,6 +283,10 @@ define([
         },
 
         _onClickRowSelection: function(e){
+            this._toggleSelectAllByEachRow();
+        },
+
+        _toggleSelectAllByEachRow: function () {
             var dataRowCount = this.$('> tbody >tr.data-row').length;
             var selectedRowCount = this.$('> tbody >tr > td.col-chkbox input:checked').length;
 
@@ -289,7 +306,68 @@ define([
                 }
             });
             return checkedIds;
-        }
+        },
+
+		getColumns: function () {
+			var that = this;
+			var columns = [];
+
+			this.$('th').each(function () {
+				var columnKey = /col-([^\s]+)/.exec(this.className);
+
+				if (columnKey && columnKey[1]) {
+					columnKey = columnKey[1];
+
+					if (that.fixedColumns.indexOf(columnKey) == -1) {
+						columns.push({
+							columnKey: columnKey,
+							columnLabel: $(this).text(),
+							visible: $(this).is(':visible')
+						});
+					}
+				}
+			});
+
+			return columns;
+		},
+
+		setColumns: function (columns) {
+			var that = this;
+
+			_.each(columns, function (column, index) {
+				var $th = this.$('th.col-' + column.columnKey);
+				var $tds = this.$('td.col-' + column.columnKey);
+
+				var $headRow = $th.closest('tr');
+				if (index == 0 && that.fixedColumns.length == 0) {
+					$th.prependTo($headRow);
+				} else {
+					$th.insertAfter($headRow.find('th').eq(that.fixedColumns.length - 1 + index));
+				}
+
+				$tds.each(function () {
+					var $td = $(this);
+					var $dataRow = $td.closest('tr');
+
+					if (index == 0 && that.fixedColumns.length == 0) {
+						$td.prependTo($dataRow);
+					} else {
+						$td.insertAfter($dataRow.find('td').eq(that.fixedColumns.length - 1 + index));
+					}
+				});
+
+				if (column.visible) {
+					$th.show();
+					$tds.show();
+				} else {
+					$th.hide();
+					$tds.hide();
+				}
+
+			});
+
+			this.columnSetting = columns;
+		}
 	});
 });
 

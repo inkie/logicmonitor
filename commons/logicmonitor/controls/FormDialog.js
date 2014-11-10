@@ -20,27 +20,28 @@ define([
 	        'click .btn-save': '_onSave',
 	        'click .btn-save-close': '_onSaveClose',
 	        'click .btn-clone': '_onClone',
-	        'click .btn-delete': '_onDelete'
+	        'click .btn-delete': '_onDelete',
+	        'click .btn-cancel': '_onCancel'
         },
 
-        initialize: function (options) {
-            if(!this.footParams){
-                this.footParams = {
-                    showFootSave: options.showFootSave,
-                    showFootClone: options.showFootClone,
-                    showFootSaveClose: options.showFootSaveClose,
-                    showFootDelete: options.showFootDelete
-                };
-                _.defaults(this.footParams, {
-                    showFootSave: true,
-                    showFootClone: false,
-                    showFootSaveClose: false,
-                    showFootDelete: false
-                });
-            }
+	    footParams: {
+		    showFootSave: true,
+		    showFootClose: false,
+		    showFootClone: false,
+		    showFootSaveClose: false,
+		    showFootDelete: false,
+		    showFootCancel: false
+	    },
 
-	        this._super(options);
-        },
+	    initialize: function (options) {
+		    var footParams = _.pick(options, 'showFootSave', 'showFootClone', 'showFootSaveClose', 'showFootDelete', 'showFootCancel', 'showFootClose');
+
+		    if (!_.isEmpty(footParams) && !options.footParams) {
+			    options.footParams = footParams;
+		    }
+
+		    this._super(options);
+	    },
 
 	    _onSave: function () {
 		    console.log('form save');
@@ -56,6 +57,10 @@ define([
 
 	    _onDelete: function () {
 		    console.log('form delete');
+	    },
+
+	    _onCancel: function () {
+		    this.close();
 	    },
 
 	    _toggleSectionBox: function (e) {
