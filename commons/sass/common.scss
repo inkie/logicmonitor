@@ -530,3 +530,12 @@ button[disabled], input[disabled] {
     text-align: center;
 }
 
+/* CSS Arrows */
+.gray-arrow {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 5.5px 0 5.5px;
+    border-color: #888888 transparent transparent transparent;
+    display: inline-block;
+}

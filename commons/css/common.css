@@ -261,7 +261,7 @@ h6 {
 }
 /* line 284, ../sass/common.scss */
 .top-nav .logo {
-  background: url('../images/logo.png?1415630447');
+  background: url('../images/logo.png?1415674113');
   float: left;
   display: inline-block;
   width: 64px;
@@ -271,7 +271,7 @@ h6 {
 }
 /* line 294, ../sass/common.scss */
 .top-nav .powered-by {
-  background: url('../images/powered_by.png?1415630543');
+  background: url('../images/powered_by.png?1415674219');
   float: left;
   display: inline-block;
   width: 188px;
@@ -514,7 +514,7 @@ button[disabled], input[disabled] {
   width: 288px;
   height: 56px;
   margin: 0 auto 25px auto;
-  background: url('../images/signin_logo.png?1415630447');
+  background: url('../images/signin_logo.png?1415674113');
 }
 /* line 519, ../sass/common.scss */
 .signin-content .section-box {
@@ -529,4 +529,15 @@ button[disabled], input[disabled] {
 .page-foot {
   margin-top: 20px;
   text-align: center;
+}
+
+/* CSS Arrows */
+/* line 534, ../sass/common.scss */
+.gray-arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 5.5px 0 5.5px;
+  border-color: #888888 transparent transparent transparent;
+  display: inline-block;
 }
