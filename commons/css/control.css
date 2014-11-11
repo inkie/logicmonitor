@@ -2676,8 +2676,9 @@ body > li.item.ui-draggable > span {
   min-height: 0;
   font-weight: normal;
   color: black;
+  border-bottom: 1px dashed #ccc;
 }
-/* line 16, ../sass/controls/_autocomplete.scss */
+/* line 17, ../sass/controls/_autocomplete.scss */
 .ui-autocomplete .ui-menu-item.ui-state-focus {
   border: none;
   background: #e1e1e1;
