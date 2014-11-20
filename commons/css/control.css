@@ -28,7 +28,7 @@
   padding: 5px 0 0 15px;
   *zoom: 1;
 }
-/* line 38, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../usr/local/rvm/gems/ruby-2.1.2/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 .lm-tab .ui-tabs-nav:after {
   content: "";
   display: table;
@@ -494,7 +494,7 @@
   padding-left: 10px;
   border-bottom: 1px solid #333333;
 }
-/* line 38, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../usr/local/rvm/gems/ruby-2.1.2/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 .lm-expand-table > tbody > tr.expanded-panel ul.expanded-con li:after {
   content: "";
   display: table;
@@ -635,7 +635,7 @@
   padding-left: 10px;
   border-bottom: 1px solid #333333;
 }
-/* line 38, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../usr/local/rvm/gems/ruby-2.1.2/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 .lm-expand-table > tbody > tr.embedded-panel ul.expanded-con li:after {
   content: "";
   display: table;
@@ -1310,6 +1310,21 @@ body input[type="url"], body textarea {
   right: 4px;
   top: 6px;
   cursor: pointer;
+}
+
+/* line 227, ../sass/controls/_form-controls.scss */
+.styled-file-input {
+  position: relative;
+}
+/* line 230, ../sass/controls/_form-controls.scss */
+.styled-file-input input[type="file"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  left: 0;
+  top: 0;
 }
 
 /* line 3, ../sass/controls/_dropdown.scss */

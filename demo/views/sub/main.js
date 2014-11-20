@@ -9,8 +9,10 @@ define([
 	'./DropDownView',
 	'./DropDownMenuView',
 	'./DialogView',
-	'./FilterBarView'
-], function (AutoCompleteView, ButtonsView, BlockUIView, CriteriaTableView, DropDownView, DropDownMenuView, DialogView, FilterBarView) {
+  './FilterBarView',
+	'./FormControlsView'
+], function (AutoCompleteView, ButtonsView, BlockUIView, CriteriaTableView, DropDownView, DropDownMenuView, 
+  DialogView, FilterBarView, FormControlsView) {
     return {
         'auto-complete': AutoCompleteView,
 	    'buttons': ButtonsView,
@@ -19,6 +21,7 @@ define([
         'dropdown': DropDownView,
         'dropdown-menu': DropDownMenuView,
 	    'dialog': DialogView,
-	    'filter-bar': FilterBarView
+	    'filter-bar': FilterBarView,
+      'form-controls': FormControlsView
     };
 });
